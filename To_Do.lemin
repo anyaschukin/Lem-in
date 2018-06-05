@@ -1,0 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   To_Do.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/04 14:46:33 by aschukin          #+#    #+#             */
+/*   Updated: 2018/06/04 14:46:35 by aschukin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+PARSING
+{} Must be in order of ants->rooms->links
+{} Must have a ##start and ##end
+{} Empty line error
+
+COMMENT
+{} ignore anything that's not ##start or ##end
+
+COMMAND
+{} Must not precede anything other than a room
+{} Must be either ##start or ##end
+{} Must have two #
+
+ANTS
+{} Must be greater than 0
+{} Must be less than 99999
+
+ROOMS
+{} Name can't begin with 'L' or '#'
+{} No rooms can have the same name 
+{} No rooms can have the same coordinates
+{} No start or end room
+{} More than 1 start and 1 end room 
+{} X and Y are ints
+{} is printable
+{} Rooms don't necessarily come in order or start-to-finish
+
+LINKS:
+{} Must have a link btwn start and end 
+{} Cannot link to itself
+{} Check links are valid
+{} Be careful that items with '-' are cast as room-links
+
+PROTECT/LEAKS
+{} Protect mallocs including dup
+{} Check pointers are returned to NULL
+{} Ensure all frees return a pointer to NULL
+
+
