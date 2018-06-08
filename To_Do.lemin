@@ -21,7 +21,11 @@ PARSING
 {} Error: empty input/no map
 
 ANTS
-{} Error: if there is a space (or anything that's not a digit) after int
+{} Test if string is an int (and nothing else)
+{} Save that int in lem_in->ants
+{} Error: number is bigger than int
+{} Error: if there is anything (including space) after int
+
 
 COMMENT
 {} ignore anything that's not ##start or ##end

@@ -27,18 +27,18 @@ static void is_ant(t_lem_in *lem_in)
 
     str = lem_in->line;
     j = 0;
-    while (str)
+    while (str) 
     {
-    //    while (j != 0 && *str && *str == ' ')
-    //        str++;
+        while (*str && *str == ' ')
+            str++;
         while (*(str + j) && (*(str + j) == '-' || *(str + j) == '+' || ft_isdigit(*(str + j))))
             j++;
         if (!*str)
             break;
-        test_int_size = atoi_thingy;
-        if (test_int_size > 2147483647 || test_int_size < -2147483648)
+        test_int_size = atol; // create a to long in libft
+        if (test_int_size > 2147483647 || test_int_size < -2147483648 || *str != '\n' || *str != '\0')
             lem_in_error(lem_in);
-        str += j;
+    //    str += j;
     }
 }
 
