@@ -12,9 +12,9 @@
 
 #include "lem_in.h"
 
-void    create_lem_in(lem_in, **argv)
+void    create_lem_in(t_lem_in *lem_in, char **argv)
 {
-    if (!(lem_in = (t_lem_in *)malloc(sizeof(t_lem_in)))
+    if (!(lem_in = (t_lem_in *)malloc(sizeof(t_lem_in))))
         exit(1);
     lem_in->argv = argv;
     lem_in->line = NULL;

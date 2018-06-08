@@ -16,16 +16,16 @@ static void free_lem_in(t_lem_in *lem_in)
 {
     if (lem_in)
     {
-        if (line)
-            free(line);
-        if (str)
-            free(str);
-        if (start)
-            free (start);
-        if (end)
-            free (end);
-        if (room) // create a separate function to free this linked list?
-            free (room);
+        if (lem_in->line)
+            free(lem_in->line);
+        if (lem_in->str)
+            free(lem_in->str);
+        if (lem_in->start)
+            free (lem_in->start);
+        if (lem_in->end)
+            free (lem_in->end);
+        if (lem_in->room) // create a separate function to free this linked list?
+            free (lem_in->room);
         free (lem_in);
     }
 }

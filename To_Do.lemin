@@ -10,11 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+1) Parse input
+2) Store infos in hash table
+3) Parse infos
 
 PARSING
 {} Must be in order of ants->rooms->links
 {} Must have a ##start and ##end
 {} Empty line error
+{} Error: empty input/no map
+
+ANTS
+{} Error: if there is a space (or anything that's not a digit) after int
 
 COMMENT
 {} ignore anything that's not ##start or ##end
@@ -22,26 +29,34 @@ COMMENT
 COMMAND
 {} Must not precede anything other than a room
 {} Must be either ##start or ##end
+{} Error: no start, no end
+{} Error: start and end are the same
 {} Must have two #
+{} Error: comment that comes right after a command 
+(## are commands modifying the properties of the line that comes right after.)
 
 ANTS
 {} Must be greater than 0
 {} Must be less than 99999
 
 ROOMS
-{} Name can't begin with 'L' or '#'
-{} No rooms can have the same name 
-{} No rooms can have the same coordinates
-{} No start or end room
-{} More than 1 start and 1 end room 
-{} X and Y are ints
-{} is printable
+{} Error: no rooms  // now
+{} Name can't begin with 'L' or '#'  // now
+{} No rooms can have the same name // later
+{} No rooms can have the same coordinates  // later
+{} Error: more than 2 coordinates  // now
+{} No start or end room  // now
+{} More than 1 start and 1 end room  // now 
+{} X and Y are ints  // later
+{} is printable  // now
 {} Rooms don't necessarily come in order or start-to-finish
 
 LINKS:
+{} Error: no links
 {} Must have a link btwn start and end 
 {} Cannot link to itself
 {} Check links are valid
+{} Error: link to unknown room
 {} Be careful that items with '-' are cast as room-links
 
 PROTECT/LEAKS
