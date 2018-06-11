@@ -20,47 +20,48 @@
 
 typedef struct  s_lem_in
 {
-    char            **argv;
-    char            *line;
-    char            *str;
+	char            **argv;
+	char            *line;
+	char            *str;
 
-    int             ants;
-    int             start_c : 1;
-    int             end_c : 1;
+	long            ants;
+	int             start_c;
+	int             end_c;
+	int				room_count;
 
-    struct t_room  *start;
-    struct t_room  *end;
-    struct t_room  *room;
+	struct t_room  *start;
+	struct t_room  *end;
+	struct t_room  *room;
 
 }               t_lem_in;
 
 typedef struct  s_hashtable
 {
-    int             size;
-    int             count;
-    char            **rooms;
+	int             size;
+	int             count;
+	char            **rooms;
 }               t_hashtable;
 
 
 typedef struct  s_room_key
 {
-    char            *key;
-    struct t_room   *room;
+	char            *key;
+	struct t_room   *room;
 }               t_room_key;
 
 typedef struct  s_room
 {
-    char            *name;
-    int             room_num;
-    int             x;
-    int             y;
-    struct t_room   *next;
+	char            *name;
+	int             room_num;
+	int             x;
+	int             y;
+	struct t_room   *next;
 }               t_room;
 
 typedef struct  s_links
 {
-    struct t_room   *from_room;
-    struct t_room   *to_room;
+	struct t_room   *from_room;
+	struct t_room   *to_room;
 }               t_links;
 
 void    create_lem_in(t_lem_in *lem_in, char **argv);

@@ -24,6 +24,8 @@ ANTS
 {} Test if string is an int (and nothing else)
 {} Save that int in lem_in->ants
 {} Error: number is bigger than int
+{} Error: negative or 0 ants
+{} Error: no ants
 {} Error: if there is anything (including space) after int
 
 
@@ -35,7 +37,8 @@ COMMAND
 {} Must be either ##start or ##end
 {} Error: no start, no end
 {} Error: start and end are the same
-{} Must have two #
+{x} Error: more than 1 start or end
+{} Must have two ##
 {} Error: comment that comes right after a command 
 (## are commands modifying the properties of the line that comes right after.)
 
@@ -45,9 +48,10 @@ ANTS
 
 ROOMS
 {} Error: no rooms  // now
-{} Name can't begin with 'L' or '#'  // now
+{x} Name can't begin with 'L' or '#'  // now
 {} No rooms can have the same name // later
 {} No rooms can have the same coordinates  // later
+{} Error : '-' in room_name
 {} Error: more than 2 coordinates  // now
 {} No start or end room  // now
 {} More than 1 start and 1 end room  // now 
@@ -57,6 +61,7 @@ ROOMS
 
 LINKS:
 {} Error: no links
+{} Error: more than one '-'
 {} Must have a link btwn start and end 
 {} Cannot link to itself
 {} Check links are valid
