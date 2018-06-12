@@ -31,9 +31,10 @@ typedef struct  s_lem_in
 	int             end_c;
 	int				room_count;
 
-	struct t_room  *start;
-	struct t_room  *end;
-	struct t_room  *room;
+	struct t_room 	*start;
+	struct t_room 	*end;
+	struct t_room 	*room;
+	struct t_link	*link;
 
 }               t_lem_in;
 
@@ -60,11 +61,11 @@ typedef struct  s_room
 	struct t_room   *next;
 }               t_room;
 
-typedef struct  s_links
+typedef struct  s_link
 {
 	struct t_room   *from_room;
 	struct t_room   *to_room;
-}               t_links;
+}               t_link;
 
 void	create_lem_in(t_lem_in **lem_in, char **argv);
 void    create_rooms(t_lem_in *lem_in, t_room **room);

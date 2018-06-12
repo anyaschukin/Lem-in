@@ -63,18 +63,16 @@ static void is_command_comment(t_lem_in *lem_in)
 
 static void is_room(t_lem_in *lem_in)
 {
-	t_room *room;
+	t_room	*room;
 	char    *str;
-	char	*start;
-	int		i;
+	char	*str_start;
 
 	str = lem_in->line;
-	start = str;
-	i = 0;
+	str_start = str;
 	printf("you and me baby\n");
-	(str[i] == 'L' || str[i] == '#') ? lem_in_error(lem_in) : 0;
+	(str[0] == 'L' || str[0] == '#') ? lem_in_error(lem_in) : 0;
 	create_rooms(lem_in, &room);
-	while (*str != '\0')
+	while (*str != '\0') // && ft_isprint(str)?
 		str++;
 	str--;
 	while (ft_isdigit(*str))
@@ -87,15 +85,36 @@ static void is_room(t_lem_in *lem_in)
 //	str--;
 //	while(ft_isprint(*str))
 //		str--;
-	room->name = strndup(start, str - start); // create ft_strndup + check if room->name is printable
+	room->name = strndup(str_start, str - str_start); // create ft_strndup + check if room->name is printable
 	lem_in->room_count++;
 }
 
 static void	is_link(t_lem_in *lem_in)
 {
-	printf("this is not a link\n");
+	// this function doesn't work yet
+
+	t_link	*link;
+	char	*str;
+	char	*str_start;
+	char	*dash;
+
+	str = lem_in->line;
+	str_start = str;
+	dash = ft_strchr(str, '-');
+	create_links(lem_in, )
+	while (*str != '\0')
+		str++;
+	str--;
+	link->to_room = strndup(dash, str - dash);
+	while (*str != str_start)
+		str--;
+	link->from_room = strndup(str, str - dash);
+
+	
+	
+	printf("waiting for it to embrace me\n");
 	lem_in->room_count++;
-}
+} 
 
 void        parse_input(t_lem_in *lem_in)
 {
@@ -108,7 +127,7 @@ void        parse_input(t_lem_in *lem_in)
 			is_ant(lem_in);
 		else if (lem_in->line[i] == '#')
 			is_command_comment(lem_in);
-		else if (ft_strchr(lem_in->line, ' ') && !(ft_strchr(lem_in->line, '-') && !ft_strchr(lem_in->line, '#')))
+		else if (ft_strchr(lem_in->line, ' ') && !(ft_strchr(lem_in->line, '-')) && !(ft_strchr(lem_in->line, '#')))
 		{
 			!lem_in->ants ?	lem_in_error(lem_in) : 0;
 			is_room(lem_in);
