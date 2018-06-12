@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Created: 2017/11/21 11:59:25 by aschukin          #+#    #+#             */
+/*   Updated: 2018/04/09 16:01:46 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
+/*
+** Allocates with malloc and returns a 'fresh' string ending with '\0'.
+** Each character of the string is initialized at '\0'
+** If the allocation fails, the funciton returns NULL.
+*/
 
-void    lemin(t_lem_in *lem_in)
+#include "libft.h"
+
+char	*ft_strnew(size_t size)
 {
-	parse_input(lem_in);
-}
+	char	*new;
 
-int     main(int argc, char **argv)
-{
-	t_lem_in *lem_in;
-
-	lem_in = NULL;
-	if (argc < 1)
-		return (0);
-	create_lem_in(&lem_in, argv); // passing the address of *lem_in
-	lemin(lem_in);
+	if (!(new = (char*)malloc((size + 1) * sizeof(char))))
+		return (NULL);
+	ft_bzero(new, size + 1);
+	return (new);
 }

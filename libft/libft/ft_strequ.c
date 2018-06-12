@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Created: 2017/11/21 14:47:48 by aschukin          #+#    #+#             */
+/*   Updated: 2017/11/28 14:35:27 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
+/*
+** Lexicographical comparison between s1 and s2.
+** If the 2 strings are identical the function returns 1, or 0 otherwise.
+*/
 
-void    lemin(t_lem_in *lem_in)
+#include "libft.h"
+
+int	ft_strequ(char const *s1, char const *s2)
 {
-	parse_input(lem_in);
-}
+	int i;
 
-int     main(int argc, char **argv)
-{
-	t_lem_in *lem_in;
-
-	lem_in = NULL;
-	if (argc < 1)
-		return (0);
-	create_lem_in(&lem_in, argv); // passing the address of *lem_in
-	lemin(lem_in);
+	i = 0;
+	if (s1 && s2)
+	{
+		if (ft_strlen(s1) != ft_strlen(s2))
+			return (0);
+		while (s1[i])
+		{
+			if (s1[i] != s2[i])
+				return (0);
+			i++;
+		}
+		return (1);
+	}
+	return (0);
 }

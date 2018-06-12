@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Created: 2017/11/17 15:40:53 by aschukin          #+#    #+#             */
+/*   Updated: 2017/11/28 10:46:52 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
+/*
+** copies len bytes of value of c (converted to an unsigned char)
+** to the string b.
+** Returns: function returns its first argument
+*/
 
-void    lemin(t_lem_in *lem_in)
+#include "libft.h"
+
+void	*ft_memset(void *b, int c, size_t len)
 {
-	parse_input(lem_in);
-}
+	char	*p;
+	size_t	i;
 
-int     main(int argc, char **argv)
-{
-	t_lem_in *lem_in;
-
-	lem_in = NULL;
-	if (argc < 1)
-		return (0);
-	create_lem_in(&lem_in, argv); // passing the address of *lem_in
-	lemin(lem_in);
+	p = (char*)b;
+	i = 0;
+	while (i < len)
+	{
+		p[i] = (char)c;
+		i++;
+	}
+	return (b);
 }

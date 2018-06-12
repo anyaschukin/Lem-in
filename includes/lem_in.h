@@ -24,6 +24,8 @@ typedef struct  s_lem_in
 	char            *line;
 	char            *str;
 
+	int				line_count;
+
 	long            ants;
 	int             start_c;
 	int             end_c;
@@ -64,7 +66,8 @@ typedef struct  s_links
 	struct t_room   *to_room;
 }               t_links;
 
-void    create_lem_in(t_lem_in *lem_in, char **argv);
+void	create_lem_in(t_lem_in **lem_in, char **argv);
+void    create_rooms(t_lem_in *lem_in, t_room **room);
 void    lem_in(t_lem_in *lem_in);
 void    lem_in_error(t_lem_in *lem_in);
 void    lem_in_free(t_lem_in *lem_in);

@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Created: 2017/11/17 17:27:29 by aschukin          #+#    #+#             */
+/*   Updated: 2018/03/31 16:15:09 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
+/*
+** Writes n zeroed bytes into the string s
+** If n is zero, bzero() does nothing
+*/
 
-void    lemin(t_lem_in *lem_in)
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
-	parse_input(lem_in);
-}
+	char	*c;
+	size_t	i;
 
-int     main(int argc, char **argv)
-{
-	t_lem_in *lem_in;
-
-	lem_in = NULL;
-	if (argc < 1)
-		return (0);
-	create_lem_in(&lem_in, argv); // passing the address of *lem_in
-	lemin(lem_in);
+	c = (char*)s;
+	i = 0;
+	while (i < n)
+	{
+		c[i] = '\0';
+		i++;
+	}
 }

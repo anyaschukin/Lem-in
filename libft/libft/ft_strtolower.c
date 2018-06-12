@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   ft_strtolower.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Created: 2018/03/13 17:48:45 by aschukin          #+#    #+#             */
+/*   Updated: 2018/03/13 17:49:34 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
+#include "libft.h"
 
-void    lemin(t_lem_in *lem_in)
+char	*ft_strtolower(char *str)
 {
-	parse_input(lem_in);
-}
+	int	i;
 
-int     main(int argc, char **argv)
-{
-	t_lem_in *lem_in;
-
-	lem_in = NULL;
-	if (argc < 1)
-		return (0);
-	create_lem_in(&lem_in, argv); // passing the address of *lem_in
-	lemin(lem_in);
+	i = -1;
+	while (str[++i])
+		str[i] = ft_tolower(str[i]);
+	return (str);
 }

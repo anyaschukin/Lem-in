@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Created: 2017/11/21 14:59:45 by aschukin          #+#    #+#             */
+/*   Updated: 2017/11/23 10:49:42 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
+/*
+** Applies function f to each chararacter passed of the string
+** passed as an argument.
+** Each character is passed by address to f to be modified if necessary.
+** Line 14: applies function to alter character by adress
+*/
 
-void    lemin(t_lem_in *lem_in)
+#include "libft.h"
+
+void	ft_striter(char *s, void (*f)(char *))
 {
-	parse_input(lem_in);
-}
+	int i;
 
-int     main(int argc, char **argv)
-{
-	t_lem_in *lem_in;
-
-	lem_in = NULL;
-	if (argc < 1)
-		return (0);
-	create_lem_in(&lem_in, argv); // passing the address of *lem_in
-	lemin(lem_in);
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i])
+	{
+		(*f)(&(s[i]));
+		i++;
+	}
 }

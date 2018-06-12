@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Created: 2017/11/21 14:52:37 by aschukin          #+#    #+#             */
+/*   Updated: 2017/11/28 14:32:43 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
+/*
+** Sets every character of the string to the value of '\0'
+*/
 
-void    lemin(t_lem_in *lem_in)
+#include "libft.h"
+
+void	ft_strclr(char *s)
 {
-	parse_input(lem_in);
-}
+	int i;
+	int len;
 
-int     main(int argc, char **argv)
-{
-	t_lem_in *lem_in;
-
-	lem_in = NULL;
-	if (argc < 1)
-		return (0);
-	create_lem_in(&lem_in, argv); // passing the address of *lem_in
-	lemin(lem_in);
+	if (s)
+	{
+		i = 0;
+		len = ft_strlen(s);
+		while (i < len)
+		{
+			s[i] = '\0';
+			i++;
+		}
+	}
 }

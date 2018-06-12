@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Created: 2017/11/21 15:39:39 by aschukin          #+#    #+#             */
+/*   Updated: 2017/11/28 14:33:58 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
+#include "libft.h"
 
-void    lemin(t_lem_in *lem_in)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	parse_input(lem_in);
-}
+	size_t	size;
+	char	*fresh;
+	int		i;
 
-int     main(int argc, char **argv)
-{
-	t_lem_in *lem_in;
-
-	lem_in = NULL;
-	if (argc < 1)
+	if (!s || !f)
 		return (0);
-	create_lem_in(&lem_in, argv); // passing the address of *lem_in
-	lemin(lem_in);
+	size = ft_strlen((char *)s);
+	if (!(fresh = (char *)malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		fresh[i] = (*f)(s[i]);
+		i++;
+	}
+	fresh[i] = '\0';
+	return (fresh);
 }

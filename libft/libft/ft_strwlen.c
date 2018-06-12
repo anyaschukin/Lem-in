@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   ft_strwlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Created: 2018/03/14 14:42:03 by aschukin          #+#    #+#             */
+/*   Updated: 2018/04/09 15:58:09 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
+#include "libft.h"
 
-void    lemin(t_lem_in *lem_in)
+intmax_t	ft_strwlen(char *str)
 {
-	parse_input(lem_in);
-}
+	intmax_t	len;
+	int			i;
 
-int     main(int argc, char **argv)
-{
-	t_lem_in *lem_in;
-
-	lem_in = NULL;
-	if (argc < 1)
-		return (0);
-	create_lem_in(&lem_in, argv); // passing the address of *lem_in
-	lemin(lem_in);
+	len = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if ((int)str[i] <= 0x7F)
+			len++;
+		else if ((int)str[i] <= 0x7FF)
+			len += 2;
+		else if ((int)str[i] <= 0x7FFF)
+			len += 3;
+		else
+			len += 4;
+		i++;
+	}
+	return (len);
 }

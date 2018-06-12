@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Created: 2017/11/27 18:36:42 by aschukin          #+#    #+#             */
+/*   Updated: 2017/11/27 20:20:34 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
+#include "libft.h"
 
-void    lemin(t_lem_in *lem_in)
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	parse_input(lem_in);
-}
+	t_list	*fresh;
+	t_list	*tmp;
+	t_list	*start;
 
-int     main(int argc, char **argv)
-{
-	t_lem_in *lem_in;
-
-	lem_in = NULL;
-	if (argc < 1)
-		return (0);
-	create_lem_in(&lem_in, argv); // passing the address of *lem_in
-	lemin(lem_in);
+	tmp = f(lst);
+	fresh = ft_lstnew(tmp->content, tmp->content_size);
+	start = fresh;
+	lst = lst->next;
+	while (lst)
+	{
+		tmp = f(lst);
+		fresh->next = ft_lstnew(tmp->content, tmp->content_size);
+		fresh = fresh->next;
+		lst = lst->next;
+	}
+	return (start);
 }

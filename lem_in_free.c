@@ -30,6 +30,8 @@ static void free_lem_in(t_lem_in *lem_in)
     }
 }
 
+//static void free_rooms((t_lem_in *lem_in)
+
 void lem_in_free(t_lem_in *lem_in)
 {
     free_lem_in(lem_in);

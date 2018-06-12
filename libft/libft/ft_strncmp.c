@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Created: 2017/11/14 17:44:12 by aschukin          #+#    #+#             */
+/*   Updated: 2017/11/25 18:37:49 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-#include <stdio.h>
+/*
+** Lexiconographically compres the null-terminated strings s1 and s2,
+** but only up to n characters.
+** Characters that appear after a '\0' are not compared.
+*/
 
-void    lemin(t_lem_in *lem_in)
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	parse_input(lem_in);
-}
+	unsigned int x;
 
-int     main(int argc, char **argv)
-{
-	t_lem_in *lem_in;
-
-	lem_in = NULL;
-	if (argc < 1)
+	x = 0;
+	while (s1[x] && s1[x] == s2[x] && x < n)
+		x++;
+	if (x < n)
+		return (((unsigned char*)s1)[x] - ((unsigned char*)s2)[x]);
+	else
 		return (0);
-	create_lem_in(&lem_in, argv); // passing the address of *lem_in
-	lemin(lem_in);
 }

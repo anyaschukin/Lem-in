@@ -22,11 +22,11 @@ PARSING
 
 ANTS
 {} Test if string is an int (and nothing else)
-{} Save that int in lem_in->ants
+{x} Save that int in lem_in->ants
 {} Error: number is bigger than int
 {} Error: negative or 0 ants
 {} Error: no ants
-{} Error: if there is anything (including space) after int
+{x} Error: if there is anything (including space) after int
 
 
 COMMENT
