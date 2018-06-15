@@ -38,6 +38,21 @@ typedef struct  s_lem_in
 
 }               t_lem_in;
 
+typedef struct  s_room
+{
+	char            *name;
+	int             room_num;
+	int             x;
+	int             y;
+	struct t_room   *next;
+}               t_room;
+
+typedef struct  s_link
+{
+	int				*from_room;
+	int				*to_room;
+}               t_link;
+
 typedef struct  s_hashtable
 {
 	int             size;
@@ -52,23 +67,9 @@ typedef struct  s_room_key
 	struct t_room   *room;
 }               t_room_key;
 
-typedef struct  s_room
-{
-	char            *name;
-	int             room_num;
-	int             x;
-	int             y;
-	struct t_room   *next;
-}               t_room;
-
-typedef struct  s_link
-{
-	struct t_room   *from_room;
-	struct t_room   *to_room;
-}               t_link;
-
 void	create_lem_in(t_lem_in **lem_in, char **argv);
 void    create_rooms(t_lem_in *lem_in, t_room **room);
+void    create_links(t_lem_in *lem_in, t_link **link);
 void    lem_in(t_lem_in *lem_in);
 void    lem_in_error(t_lem_in *lem_in);
 void    lem_in_free(t_lem_in *lem_in);

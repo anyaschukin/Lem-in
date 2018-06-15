@@ -87,6 +87,7 @@ static void is_room(t_lem_in *lem_in)
 //		str--;
 	room->name = strndup(str_start, str - str_start); // create ft_strndup + check if room->name is printable
 	lem_in->room_count++;
+	t_room->room_num = lem_in->room_count;
 }
 
 static void	is_link(t_lem_in *lem_in)
@@ -101,15 +102,17 @@ static void	is_link(t_lem_in *lem_in)
 	str = lem_in->line;
 	str_start = str;
 	dash = ft_strchr(str, '-');
-	create_links(lem_in, )
+	create_links(lem_in, &link);
 	while (*str != '\0')
 		str++;
 	str--;
-	link->to_room = strndup(dash, str - dash);
-	while (*str != str_start)
+	// if strcmp == 0, then hashtable to access room number? 
+	link->to_room = strndup(dash, str - dash); // to_room is an int now
+	while (*str != *str_start)
 		str--;
-	link->from_room = strndup(str, str - dash);
-
+	link->from_room = strndup(str, str - dash); // from_room is an int now, so this nonsense don't work
+	printf("to_room %d\n", link->to_room);
+	printf("from_room %d\n", link->from_room);
 	
 	
 	printf("waiting for it to embrace me\n");

@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_input.c                                      :+:      :+:    :+:   */
+/*   create_rooms.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 13:34:20 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 13:34:21 by aschukin         ###   ########.fr       */
+/*   Created: 2018/06/12 16:19:09 by aschukin          #+#    #+#             */
+/*   Updated: 2018/06/12 16:19:13 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
+
+// in this function:
+// malloc + initialize rooms/start/end
+// parse rooms for double-rooms (2 rooms with same name) ?
 
 void    create_rooms(t_lem_in *lem_in, t_room **room)
 {
@@ -25,7 +29,7 @@ void    create_rooms(t_lem_in *lem_in, t_room **room)
 }
 
 /*
-void	create_rooms(t_lem_in *lem_in, t_room **room)
+void	parse_rooms(t_lem_in *lem_in, t_room **room)
 {
 	t_room *start;
 	t_room *end;
