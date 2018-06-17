@@ -49,15 +49,14 @@ typedef struct  s_room
 
 typedef struct  s_link
 {
-	int				*from_room;
-	int				*to_room;
+	int				from_room;
+	int				to_room;
 }               t_link;
 
 typedef struct  s_hashtable
 {
-	int             size;
-	int             count;
-	char            **rooms;
+	unsigned int	key;
+	char            *ptr;
 }               t_hashtable;
 
 
@@ -70,6 +69,7 @@ typedef struct  s_room_key
 void	create_lem_in(t_lem_in **lem_in, char **argv);
 void    create_rooms(t_lem_in *lem_in, t_room **room);
 void    create_links(t_lem_in *lem_in, t_link **link);
+long	generate_hash(char *str, unsigned int room_count);
 void    lem_in(t_lem_in *lem_in);
 void    lem_in_error(t_lem_in *lem_in);
 void    lem_in_free(t_lem_in *lem_in);
