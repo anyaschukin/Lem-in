@@ -68,7 +68,7 @@ typedef struct  s_room_key
 }               t_room_key;
 
 void	create_lem_in(t_lem_in **lem_in, char **argv);
-void    add_rooms(t_lem_in *lem_in);
+void    add_rooms(t_lem_in *lem_in, t_room **new);
 void    create_links(t_lem_in *lem_in, t_link **link);
 long	generate_hash(char *str, unsigned int room_count);
 void    lem_in(t_lem_in *lem_in);

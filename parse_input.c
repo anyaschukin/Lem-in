@@ -65,8 +65,7 @@ static void is_room(t_lem_in *lem_in)
 	char    *str;
 	char	*str_start;
 
-	add_rooms(lem_in);
-	room = lem_in->room;
+	add_rooms(lem_in, &room);
 	str = lem_in->line;
 	str_start = str;
 	while (*str != '\0') // && ft_isprint(str)?
