@@ -26,15 +26,16 @@ typedef struct  s_lem_in
 
 	int				line_count;
 
-	long            ants;
+	long            ants; // unsigned?
 	int             start_c;
 	int             end_c;
-	int				room_count;
+	unsigned int	room_count;
 
-	struct t_room 	*start;
-	struct t_room 	*end;
-	struct t_room 	*room;
-	struct t_link	*link;
+	struct s_room 	*start;
+	struct s_room 	*end;
+	struct s_room 	*room;
+	struct s_link	*link;
+	struct s_hashtable *hash;
 
 }               t_lem_in;
 
@@ -44,7 +45,7 @@ typedef struct  s_room
 	int             room_num;
 	int             x;
 	int             y;
-	struct t_room   *next;
+	struct s_room   *next;
 }               t_room;
 
 typedef struct  s_link
@@ -67,7 +68,7 @@ typedef struct  s_room_key
 }               t_room_key;
 
 void	create_lem_in(t_lem_in **lem_in, char **argv);
-void    create_rooms(t_lem_in *lem_in, t_room **room);
+void    add_rooms(t_lem_in *lem_in);
 void    create_links(t_lem_in *lem_in, t_link **link);
 long	generate_hash(char *str, unsigned int room_count);
 void    lem_in(t_lem_in *lem_in);

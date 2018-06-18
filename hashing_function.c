@@ -15,7 +15,7 @@
 
 // 100 is to guarantee that there are 100 hashes per room, to reduce # of collisions
 // 33 is to change the values of each bit after you've shifted them by the prime number
-
+/*
 long	generate_hash(char *str, int room_num)
 {
 	int				i;
@@ -40,20 +40,19 @@ t_hashtable	*create_entry(t_room *room)
 	return (new);
 }
 
-t_hashtable	*create_hashtable(unsigned int room_count)
+void	create_hashtable(t_lem_in *lem_in, t_hashtable **hash)
 {
 	int			i;
-	t_hashtable	**new;
 
 	i = 0;
-	if (!(new = (t_hashtable**)malloc(sizeof(t_hashtable) * room_count)))
+	if (!(hash = (t_hashtable**)malloc(sizeof(t_hashtable) * t_lem_in->room_count)))
 		return (NULL);
-	while (i < size)
-		new[i++] = NULL;
-	return (new);
+	while (i < t_lem_in->room_count)
+		hash[i++] = NULL;
+	return (hash);
 }
 
-void		fill_hashtable()
+void		fill_hashtable(t_lem_in *lem_in, t_room *room)
 {
 
 }
@@ -95,4 +94,4 @@ function optimizedHash(key, numOfBuckets) {
 
    total = total % numOfBuckets;
    return total;
-}
+}*/
