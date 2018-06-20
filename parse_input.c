@@ -65,17 +65,16 @@ static void is_room(t_lem_in *lem_in)
 	char    *str;
 	char	*str_start;
 
-	add_rooms(lem_in, &room);
 	str = lem_in->line;
 	str_start = str;
+	(str[0] == 'L' || str[0] == '#') ? lem_in_error(lem_in) : 0;
+	add_rooms(lem_in, &room);
 	while (*str != '\0') // && ft_isprint(str)?
 		str++;
 	str--;
 	while (ft_isdigit(*str))
 		str--;
-	printf("room->y before: %d\n", room->y);
 	room->y = ft_atoi(str);
-	printf("room->y after: %d\n", room->y);
 	str--;
 	while (ft_isdigit(*str))
 		str--;
@@ -83,11 +82,8 @@ static void is_room(t_lem_in *lem_in)
 	room->name = strndup(str_start, str - str_start); // create ft_strndup + check if room->name ft_isprint
 	lem_in->room_count++;
 	room->room_num = lem_in->room_count;
-	printf("%s\n", room->name);
-	printf("%d\n", room->room_num);
-//	room = room->prev ... need to link all the rooms in a list 
 }
-/*
+
 static void	is_link(t_lem_in *lem_in)
 {
 	// this function doesn't work yet
@@ -99,21 +95,20 @@ static void	is_link(t_lem_in *lem_in)
 	str = lem_in->line;
 	str_start = str;
 	dash = ft_strchr(str, '-');
-	create_links(lem_in, &link);
+	add_links(lem_in, &link);
 	while (*str != '\0')
 		str++;
 	str--;
-	// if strcmp == 0, then hashtable to access room number? 
-	link->to_room = strndup(dash, str - dash); // to_room is an int now
+	link->to_room = strndup(str, dash - str);
 	while (*str != *str_start)
 		str--;
-	link->from_room = strndup(str, str - dash); // from_room is an int now, so this nonsense don't work
-	printf("to_room %d\n", link->to_room);
-	printf("from_room %d\n", link->from_room);
-	
+	link->from_room = ft_strdup((dash + 1));
+	printf("to_room %s\n", link->to_room);
+	printf("from_room %s\n", link->from_room);
+	// if strcmp == 0, then hashtable to access room number? 
 
 	lem_in->room_count++;
-} */
+}
 
 void        parse_input(t_lem_in *lem_in)
 {
@@ -128,20 +123,20 @@ void        parse_input(t_lem_in *lem_in)
 			is_command_comment(lem_in);
 		else if (ft_strchr(lem_in->line, ' ') && !(ft_strchr(lem_in->line, '-')) && !(ft_strchr(lem_in->line, '#')))
 		{
-			(!lem_in->ants || lem_in->line[0] == 'L' || lem_in->line[0] == '#') ? lem_in_error(lem_in) : 0;
+			!lem_in->ants ? lem_in_error(lem_in) : 0;
 			is_room(lem_in);
 		}
-	/*	else if (ft_strchr(lem_in->line, '-'))
+		else if (ft_strchr(lem_in->line, '-'))
 		{
 			(!lem_in->start || !lem_in->end) ? lem_in_error(lem_in) : 0;
-			fill_hashtable(lem_in);
+			create_hashtable(lem_in);
 			is_link(lem_in);
 		}
 		else
 		{
 			printf("cry cry babyyyyy\n");
 			lem_in_error(lem_in);
-		}*/
+		} 
 	}
 	lem_in->line_count++;
 }
