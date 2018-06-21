@@ -20,8 +20,6 @@ static t_link	*create_links(t_lem_in *lem_in)
         lem_in_error(lem_in);
     new->from_room = NULL;
 	new->to_room = NULL;
-	new->from = 0;
-	new->to = 0;
 	new->next = NULL;
 	return(new);
 }

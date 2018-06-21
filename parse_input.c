@@ -59,7 +59,7 @@ static void is_command_comment(t_lem_in *lem_in)
 //	(lem_in->start_c > 1 || lem_in->end_c > 1) ? lem_in_error(lem_in) : 0;
 }
 
-static void is_room(t_lem_in *lem_in)
+static void is_room(t_lem_in *lem_in) // incorrect checksum
 {
 	t_room	*room;
 	char    *str;
@@ -103,8 +103,8 @@ static void	is_link(t_lem_in *lem_in)
 	while (*str != *str_start)
 		str--;
 	link->from_room = ft_strdup((dash + 1));
-	printf("to_room %s\n", link->to_room);
 	printf("from_room %s\n", link->from_room);
+	printf("to_room %s\n", link->to_room);
 	// if strcmp == 0, then hashtable to access room number? 
 
 	lem_in->room_count++;
@@ -128,16 +128,16 @@ void        parse_input(t_lem_in *lem_in)
 		}
 		else if (ft_strchr(lem_in->line, '-'))
 		{
-			(!lem_in->start || !lem_in->end) ? lem_in_error(lem_in) : 0;
-			create_hashtable(lem_in);
-			is_link(lem_in);
+		//	(!lem_in->start || !lem_in->end) ? lem_in_error(lem_in) : 0;
+				is_link(lem_in);
 		}
 		else
 		{
 			printf("cry cry babyyyyy\n");
 			lem_in_error(lem_in);
 		} 
+		lem_in->line_count++;
 	}
-	lem_in->line_count++;
+	create_hashtable(lem_in);
 }
 

@@ -13,10 +13,6 @@
 #include "lem_in.h"
 #include <stdio.h>
 
-// in this function:
-// malloc + initialize rooms/start/end
-// parse rooms for double-rooms (2 rooms with same name) ?
-
 static t_room	*create_rooms(t_lem_in *lem_in)
 {
 	t_room *new;
@@ -28,32 +24,30 @@ static t_room	*create_rooms(t_lem_in *lem_in)
 	new->x = 0;
 	new->y = 0;
 	new->next = NULL;
+//	new->collision = NULL;
+//	new->connect = NULL;
 	return(new);
 }
 
 void			add_rooms(t_lem_in *lem_in, t_room **new)
 {
-	t_room		*old;
+	t_room		*tmp;
 
-	old = lem_in->room;
+	tmp = lem_in->room;
 	if (!lem_in->room)
-		lem_in->room = create_rooms(lem_in);
+	{
+		*new = create_rooms(lem_in);
+		lem_in->room = *new;
+	}
 	else
 	{
-		if (!((*new) = (t_room *)malloc(sizeof(t_room))))
+		if (!((*new) = create_rooms(lem_in)))
 			lem_in_error(lem_in);
-		(*new)->name = NULL;
-		(*new)->room_num = 0;
-		(*new)->x = 0;
-		(*new)->y = 0;
-		while (old->next != NULL)
-			old = old->next;
-		old->next = (*new);
-		(*new)->next = NULL;
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = (*new); // collision? connect?
 	}
 }
-
-// room_info ?
 
 /*
 void	parse_rooms(t_lem_in *lem_in, t_room **room)
