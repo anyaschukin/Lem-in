@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
 
 static t_room	*create_rooms(t_lem_in *lem_in)
 {

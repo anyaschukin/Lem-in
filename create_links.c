@@ -26,22 +26,21 @@ static t_link	*create_links(t_lem_in *lem_in)
 
 void			add_links(t_lem_in *lem_in, t_link **new)
 {
-	t_link		*old;
+	t_link		*tmp;
 
-	old = lem_in->link;
+	tmp = lem_in->link;
 	if (!lem_in->link)
-		lem_in->link = create_links(lem_in);
+	{
+		*new = create_links(lem_in);
+		lem_in->link = *new;
+	}
 	else
 	{
 		if (!((*new) = (t_link *)malloc(sizeof(t_link))))
 			lem_in_error(lem_in);
-        (*new)->from_room = 0;
-	    (*new)->to_room = 0;
-	    (*new)->next = NULL;
-		while (old->next != NULL)
-			old = old->next;
-		old->next = (*new);
-		(*new)->next = NULL;
+        while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = (*new);
 	}
 }
 

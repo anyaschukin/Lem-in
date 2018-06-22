@@ -86,7 +86,6 @@ static void is_room(t_lem_in *lem_in) // incorrect checksum
 
 static void	is_link(t_lem_in *lem_in)
 {
-	// this function doesn't work yet
 	t_link	*link;
 	char	*str;
 	char	*str_start;
@@ -96,17 +95,11 @@ static void	is_link(t_lem_in *lem_in)
 	str_start = str;
 	dash = ft_strchr(str, '-');
 	add_links(lem_in, &link);
-	while (*str != '\0')
-		str++;
-	str--;
-	link->to_room = strndup(str, dash - str);
+	link->from_room = strndup(str, dash - str);
 	while (*str != *str_start)
 		str--;
-	link->from_room = ft_strdup((dash + 1));
-	printf("from_room %s\n", link->from_room);
-	printf("to_room %s\n", link->to_room);
+	link->to_room = ft_strdup((dash + 1));
 	// if strcmp == 0, then hashtable to access room number? 
-
 	lem_in->room_count++;
 }
 
