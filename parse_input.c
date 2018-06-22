@@ -88,16 +88,12 @@ static void	is_link(t_lem_in *lem_in)
 {
 	t_link	*link;
 	char	*str;
-	char	*str_start;
 	char	*dash;
 
 	str = lem_in->line;
-	str_start = str;
 	dash = ft_strchr(str, '-');
 	add_links(lem_in, &link);
 	link->from_room = strndup(str, dash - str);
-	while (*str != *str_start)
-		str--;
 	link->to_room = ft_strdup((dash + 1));
 	// if strcmp == 0, then hashtable to access room number? 
 	lem_in->room_count++;
