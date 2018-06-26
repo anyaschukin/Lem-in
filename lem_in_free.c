@@ -13,6 +13,8 @@
 #include "lem_in.h"
 #include <stdio.h>
 
+//static void free_connections(t_connection *connect)
+
 static void free_rooms(t_room *room)
 {
     t_room  *tmp;

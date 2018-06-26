@@ -19,6 +19,7 @@ void    lemin(t_lem_in *lem_in)
 
 	parse_input(lem_in);
 	do_connections(lem_in);
+	solve(lem_in);
 //	parse_stored(lem_in);
 }
 
