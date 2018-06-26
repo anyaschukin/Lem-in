@@ -18,13 +18,7 @@ static t_room	*create_rooms(t_lem_in *lem_in)
 
     if (!(new = (t_room *)malloc(sizeof(t_room))))
         lem_in_error(lem_in);
-    new->name = NULL;
-	new->room_num = 0;
-	new->x = 0;
-	new->y = 0;
-	new->next = NULL;
-//	new->collision = NULL;
-//	new->connect = NULL;
+    bzero(new, sizeof(t_room));
 	return(new);
 }
 

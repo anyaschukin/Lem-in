@@ -46,8 +46,8 @@ typedef struct  s_room
 	int             x;
 	int             y;
 	struct s_room   *next;
-//	struct s_room   *collision;
-//	struct  s_connections *connect;
+	struct s_room   *collision;
+	struct  s_connection *connect;
 }               t_room;
 
 typedef struct  s_link
@@ -63,22 +63,25 @@ typedef struct  s_hashtable
 	struct s_room	*ptr;
 }               t_hashtable;
 
-typedef struct  s_connections //
+typedef struct  s_connection //
 {
-	char			*from;
-	char			*to;
-	struct  s_connections *next;
-}               t_connections;
+//	char			*from;
+	t_room			*to;
+	struct  s_connection *next;
+}               t_connection;
 
-void	create_hashtable(t_lem_in *lem_in);
-void	create_lem_in(t_lem_in **lem_in, char **argv);
-void    add_rooms(t_lem_in *lem_in, t_room **new);
-void	add_links(t_lem_in *lem_in, t_link **new);
-long	generate_hash(char *str, unsigned int room_count);
-void    lem_in(t_lem_in *lem_in);
-void    lem_in_error(t_lem_in *lem_in);
-void    lem_in_free(t_lem_in *lem_in);
-void    parse_input(t_lem_in *lem_in);
+void			create_hashtable(t_lem_in *lem_in);
+void			create_lem_in(t_lem_in **lem_in, char **argv);
+void    		add_rooms(t_lem_in *lem_in, t_room **new);
+void			add_links(t_lem_in *lem_in, t_link **new);
+unsigned long	generate_hash(char *str, unsigned int room_count);
+void    		lem_in(t_lem_in *lem_in);
+void    		lem_in_error(t_lem_in *lem_in);
+void    		lem_in_free(t_lem_in *lem_in);
+void			loop_links(t_lem_in *lem_in);
+void    		parse_input(t_lem_in *lem_in);
+t_room  		*point_room(t_lem_in *lem_in, char *str);
+//void	parse_stored(t_lem_in *lem_in);
 
 #endif
 // create an int on/off, so as you go through the rooms,

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include <stdio.h>
 
 static t_link	*create_links(t_lem_in *lem_in)
 {
@@ -18,9 +19,7 @@ static t_link	*create_links(t_lem_in *lem_in)
 
     if (!(new = (t_link *)malloc(sizeof(t_link))))
         lem_in_error(lem_in);
-    new->from_room = NULL;
-	new->to_room = NULL;
-	new->next = NULL;
+    bzero(new, sizeof(t_link));
 	return(new);
 }
 

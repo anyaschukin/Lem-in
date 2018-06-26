@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
+#include <stdio.h>
 
 static void free_rooms(t_room *room)
 {
@@ -21,7 +21,7 @@ static void free_rooms(t_room *room)
     if (room)
     {
         tmp = room->next;
-        while (room->next != NULL)
+        while (tmp->next != NULL)
         {
             delete = tmp;
             tmp = tmp->next;
@@ -31,9 +31,27 @@ static void free_rooms(t_room *room)
     }
 }
 
+static void free_links(t_link *link)
+{
+    t_link  *tmp;
+    t_link  *delete;
+
+    if (link)
+    {
+        tmp = link->next;
+        while (tmp->next != NULL)
+        {
+            delete = tmp;
+            tmp = tmp->next;
+            free(delete);
+        }
+        free(tmp);
+    }
+}
+
 static void free_hashtable(t_lem_in *lem_in)
 {
-    t_room     *tmp;
+    t_room          *tmp;
     unsigned int    hash;
 
     if (lem_in->table)
@@ -42,10 +60,10 @@ static void free_hashtable(t_lem_in *lem_in)
         while (lem_in->table)
         {
             hash = generate_hash(tmp->name, tmp->room_num);
-            free (lem_in->table[hash]);
+            free(lem_in->table[hash]);
             tmp = tmp->next;
         }
-        free (lem_in->table);
+        free(lem_in->table);
     }
 }
 
@@ -58,15 +76,15 @@ void lem_in_free(t_lem_in *lem_in)
         if (lem_in->str)
             free(lem_in->str);
         if (lem_in->start)
-            free (lem_in->start);
+            free(lem_in->start);
         if (lem_in->end)
-            free (lem_in->end);
-        if (lem_in->room) // create a separate function to free this linked list?
+            free(lem_in->end);
+        if (lem_in->room)
             free_rooms(lem_in->room);
-     //   if (lem_in->link)
-     //       free_links(lem_in->link);
+        if (lem_in->link)
+            free_links(lem_in->link);
         if (lem_in->table)
             free_hashtable(lem_in);
-        free (lem_in);
+        free(lem_in);
     }
 }

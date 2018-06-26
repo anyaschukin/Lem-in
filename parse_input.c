@@ -59,7 +59,7 @@ static void is_command_comment(t_lem_in *lem_in)
 //	(lem_in->start_c > 1 || lem_in->end_c > 1) ? lem_in_error(lem_in) : 0;
 }
 
-static void is_room(t_lem_in *lem_in) // incorrect checksum
+static void is_room(t_lem_in *lem_in)
 {
 	t_room	*room;
 	char    *str;
@@ -67,9 +67,9 @@ static void is_room(t_lem_in *lem_in) // incorrect checksum
 
 	str = lem_in->line;
 	str_start = str;
-	(str[0] == 'L' || str[0] == '#') ? lem_in_error(lem_in) : 0;
+	(str[0] == 'L' || str[0] == '#') ? lem_in_error(lem_in) : 0; // && ft_isprint(str)?
 	add_rooms(lem_in, &room);
-	while (*str != '\0') // && ft_isprint(str)?
+	while (*str != '\0')
 		str++;
 	str--;
 	while (ft_isdigit(*str))
@@ -79,7 +79,7 @@ static void is_room(t_lem_in *lem_in) // incorrect checksum
 	while (ft_isdigit(*str))
 		str--;
 	room->x = ft_atoi(str);
-	room->name = strndup(str_start, str - str_start); // create ft_strndup + check if room->name ft_isprint
+	room->name = strndup(str_start, str - str_start); // create ft_strndup
 	lem_in->room_count++;
 	room->room_num = lem_in->room_count;
 }
@@ -95,8 +95,7 @@ static void	is_link(t_lem_in *lem_in)
 	add_links(lem_in, &link);
 	link->from_room = strndup(str, dash - str);
 	link->to_room = ft_strdup((dash + 1));
-	// if strcmp == 0, then hashtable to access room number? 
-	lem_in->room_count++;
+	ft_strcmp(link->from_room, link->to_room) == 0 ? lem_in_error(lem_in) : 0;
 }
 
 void        parse_input(t_lem_in *lem_in)

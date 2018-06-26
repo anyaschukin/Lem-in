@@ -27,4 +27,6 @@ void    create_lem_in(t_lem_in **lem_in, char **argv)
     (*lem_in)->start = NULL;
     (*lem_in)->end = NULL;
     (*lem_in)->room = NULL;
+    (*lem_in)->link = NULL;
+    (*lem_in)->table = NULL;
 }

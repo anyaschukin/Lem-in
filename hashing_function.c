@@ -17,7 +17,7 @@
 // 100 is to guarantee that there are 100 hashes per room, to reduce # of collisions
 // 33 is to change the values of each bit after you've shifted them by the prime number
 
-long				generate_hash(char *str, unsigned int room_count)
+unsigned long		generate_hash(char *str, unsigned int room_count)
 {
 	int				i;
 	int				c;
@@ -42,6 +42,17 @@ static t_hashtable	*create_bucket(t_lem_in *lem_in, t_room *room)
 	return (new);
 }
 
+/*
+** Adds new_room (the collision) to the head of the bucket
+** New_room->collided points to the old room
+*/
+
+static void			collision_handling(t_lem_in *lem_in, t_room *new_room, unsigned long key)
+{
+	new_room->collision = lem_in->table[key]->ptr;
+	lem_in->table[key]->ptr = new_room;
+}
+
 static void			fill_hashtable(t_lem_in *lem_in)
 {
 	t_room			*tmp;
@@ -51,7 +62,10 @@ static void			fill_hashtable(t_lem_in *lem_in)
 	while (tmp != NULL)
 	{
 		key = generate_hash(tmp->name, lem_in->room_count);
-		lem_in->table[key] = create_bucket(lem_in, tmp);
+		if (lem_in->table[key] != NULL)
+			collision_handling(lem_in, tmp, key);
+		else
+			lem_in->table[key] = create_bucket(lem_in, tmp);
 		tmp = tmp->next;
 	}
 }
@@ -61,7 +75,7 @@ void				create_hashtable(t_lem_in *lem_in)
 	unsigned int	i;
 
 	i = 0;
-	if (!(lem_in->table = (t_hashtable**)malloc(sizeof(t_hashtable) * lem_in->room_count)))
+	if (!(lem_in->table = (t_hashtable**)malloc(sizeof(t_hashtable) * lem_in->room_count * 1000))) //
 		lem_in_error(lem_in);
 	while (i < lem_in->room_count)
 		lem_in->table[i++] = NULL;
@@ -72,18 +86,6 @@ void				create_hashtable(t_lem_in *lem_in)
 
 // EXTRA HASH TABLE IMPLEMENTATIONS
 /*
-int		ft_hash(char *str, int rooms)
-{
-	int				c;
-	unsigned long	hash;
-
-	(rooms < 100) ? rooms = 100 : 0;
-	hash = 5381;
-	while ((c = *(str++)))
-		hash = hash * 33 + c;
-	return ((unsigned int)(hash % (rooms * 100)));
-}
-
 public int hashCode() {
 int hash = 0;
 for (int i = 0; i < length(); i++)
