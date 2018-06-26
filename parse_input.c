@@ -56,7 +56,6 @@ static void is_command_comment(t_lem_in *lem_in)
 	else if (lem_in->line[i] == '#' && (ft_strcmp(lem_in->line, "##start") != 0 
 		&& (ft_strcmp(lem_in->line, "##end") != 0)))
 		;
-//	(lem_in->start_c > 1 || lem_in->end_c > 1) ? lem_in_error(lem_in) : 0;
 }
 
 static void is_room(t_lem_in *lem_in)
@@ -81,6 +80,8 @@ static void is_room(t_lem_in *lem_in)
 	room->x = ft_atoi(str);
 	room->name = strndup(str_start, str - str_start); // create ft_strndup
 	lem_in->room_count++;
+	(lem_in->start_c == 1 || lem_in->end_c == 1)? start_or_end_room(lem_in, room) : 0;
+	(lem_in->start_c > 2 || lem_in->end_c > 2)? lem_in_error(lem_in) : 0;
 	room->room_num = lem_in->room_count;
 }
 
@@ -116,8 +117,8 @@ void        parse_input(t_lem_in *lem_in)
 		}
 		else if (ft_strchr(lem_in->line, '-'))
 		{
-		//	(!lem_in->start || !lem_in->end) ? lem_in_error(lem_in) : 0;
-				is_link(lem_in);
+			(!lem_in->start || !lem_in->end) ? lem_in_error(lem_in) : 0;
+			is_link(lem_in);
 		}
 		else
 		{

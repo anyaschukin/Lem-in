@@ -59,7 +59,7 @@ t_room              *point_room(t_lem_in *lem_in, char *str)
     return (point);
 }
 
-void			    loop_links(t_lem_in *lem_in)
+void			    do_connections(t_lem_in *lem_in)
 {
 	t_link	        *tmp;
 	t_room	        *from;
@@ -71,6 +71,7 @@ void			    loop_links(t_lem_in *lem_in)
 		from = point_room(lem_in, tmp->from_room);
 		to = point_room(lem_in, tmp->to_room);
         assign_connections(lem_in, from, to);
+    //    printf("%s links to %s\n", from->connect->to->name, to->connect->to->name);
 		tmp = tmp->next;
 	}
 }

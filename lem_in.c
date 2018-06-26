@@ -15,8 +15,10 @@
 
 void    lemin(t_lem_in *lem_in)
 {
+	t_room	*start;
+
 	parse_input(lem_in);
-	loop_links(lem_in);
+	do_connections(lem_in);
 //	parse_stored(lem_in);
 }
 
@@ -39,3 +41,10 @@ int     main(int argc, char **argv)
 	tmp = point_room(lem_in, "room8", lem_in->room_count);
 	printf("name = %s\n y = %d\n", tmp->name, tmp->y);
 */
+/*
+	start = lem_in->end;
+	while (start->connect)
+	{
+		printf("%s links to %s\n", start->name, start->connect->to->name);
+		start->connect = start->connect->next;
+	}*/

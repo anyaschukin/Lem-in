@@ -12,6 +12,20 @@
 
 #include "lem_in.h"
 
+void		start_or_end_room(t_lem_in *lem_in, t_room *room)
+{
+	if (lem_in->start_c == 1)
+	{
+		lem_in->start = room;
+		lem_in->start_c++;
+	}
+	if (lem_in->end_c == 1) 
+	{
+		lem_in->end = room;
+		lem_in->end_c++;
+	}
+}
+
 static t_room	*create_rooms(t_lem_in *lem_in)
 {
 	t_room *new;

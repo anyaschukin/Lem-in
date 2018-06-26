@@ -74,13 +74,14 @@ void			create_hashtable(t_lem_in *lem_in);
 void			create_lem_in(t_lem_in **lem_in, char **argv);
 void    		add_rooms(t_lem_in *lem_in, t_room **new);
 void			add_links(t_lem_in *lem_in, t_link **new);
+void			do_connections(t_lem_in *lem_in);
 unsigned long	generate_hash(char *str, unsigned int room_count);
 void    		lem_in(t_lem_in *lem_in);
 void    		lem_in_error(t_lem_in *lem_in);
 void    		lem_in_free(t_lem_in *lem_in);
-void			loop_links(t_lem_in *lem_in);
 void    		parse_input(t_lem_in *lem_in);
 t_room  		*point_room(t_lem_in *lem_in, char *str);
+void			start_or_end_room(t_lem_in *lem_in, t_room *room);
 //void	parse_stored(t_lem_in *lem_in);
 
 #endif
