@@ -52,7 +52,7 @@ void			add_rooms(t_lem_in *lem_in, t_room **new)
 			lem_in_error(lem_in);
 		while (tmp->next != NULL)
 			tmp = tmp->next;
-		tmp->next = (*new); // collision? connect?
+		tmp->next = (*new);
 	}
 }
 

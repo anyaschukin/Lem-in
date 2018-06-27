@@ -37,7 +37,7 @@ void			add_links(t_lem_in *lem_in, t_link **new)
 	{
 		*new = create_links(lem_in);
 			//lem_in_error(lem_in);
-        while (tmp->next != NULL)
+		while (tmp->next != NULL)
 			tmp = tmp->next;
 		tmp->next = (*new);
 	}

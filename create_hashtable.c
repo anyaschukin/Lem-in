@@ -17,6 +17,10 @@
 // 100 is to guarantee that there are 100 hashes per room, to reduce # of collisions
 // 33 is to change the values of each bit after you've shifted them by the prime number
 
+/*
+** DBJ2 hash function
+*/
+
 unsigned long		generate_hash(char *str, unsigned int room_count)
 {
 	int				i;
@@ -75,7 +79,6 @@ void				create_hashtable(t_lem_in *lem_in)
 	unsigned int	i;
 
 	i = 0;
-	printf("por que\n");
 	if (!(lem_in->table = (t_hashtable**)malloc(sizeof(t_hashtable) * lem_in->room_count * 1000))) //
 		lem_in_error(lem_in);
 	while (i < lem_in->room_count)
