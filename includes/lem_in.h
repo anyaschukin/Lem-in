@@ -83,6 +83,7 @@ void    		lem_in_free(t_lem_in *lem_in);
 void    		parse_input(t_lem_in *lem_in);
 t_room  		*point_room(t_lem_in *lem_in, char *str);
 void			start_or_end_room(t_lem_in *lem_in, t_room *room);
+void    		solve(t_lem_in *lem_in);
 
 #endif
 // create an int on/off, so as you go through the rooms,

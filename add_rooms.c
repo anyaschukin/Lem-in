@@ -32,7 +32,7 @@ static t_room	*create_rooms(t_lem_in *lem_in)
 
     if (!(new = (t_room *)malloc(sizeof(t_room))))
         lem_in_error(lem_in);
-    bzero(new, sizeof(t_room));
+    ft_bzero(new, sizeof(t_room));
 	return(new);
 }
 

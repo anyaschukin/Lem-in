@@ -19,7 +19,7 @@ static t_connection	*create_connections(t_lem_in *lem_in)
 
     if (!(new = (t_connection *)malloc(sizeof(t_connection))))
         lem_in_error(lem_in);
-    bzero(new, sizeof(t_connection));
+    ft_bzero(new, sizeof(t_connection));
 	return(new);
 }
 

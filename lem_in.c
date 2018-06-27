@@ -15,8 +15,6 @@
 
 void    lemin(t_lem_in *lem_in)
 {
-	t_room	*start;
-
 	parse_input(lem_in);
 	do_connections(lem_in);
 	solve(lem_in);
