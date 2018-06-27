@@ -35,8 +35,8 @@ void			add_links(t_lem_in *lem_in, t_link **new)
 	}
 	else
 	{
-		if (!((*new) = (t_link *)malloc(sizeof(t_link))))
-			lem_in_error(lem_in);
+		*new = create_links(lem_in);
+			//lem_in_error(lem_in);
         while (tmp->next != NULL)
 			tmp = tmp->next;
 		tmp->next = (*new);

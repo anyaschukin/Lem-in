@@ -13,6 +13,29 @@
 #include "lem_in.h"
 #include <stdio.h>
 
+static void     find_path(t_lem_in *lem_in, t_room **array)
+{
+    t_room          **tmp;
+    t_connection    *route;
+
+    tmp = array;
+    while (*tmp)
+    {
+        route = (*tmp)->connect;
+        while (route)
+        {
+            if (route->to == lem_in->reverse_path && route->to != *tmp)
+            {
+                (*tmp)->path_next = lem_in->reverse_path;
+                lem_in->reverse_path->path_prev = *tmp;
+                lem_in->reverse_path = *tmp;
+            }
+            route = route->next;  
+        }
+        tmp++;
+    }
+}
+
 /*
 ** Takes an array of linked lists (of connections btwn rooms)
 ** Looks at each list, until that list is at t_room *end
@@ -28,12 +51,12 @@ static t_room   **create_mad_array(t_room **array, int rooms)
     int             i;
 
     i = 0;
-    if (!(new = (t_room **)malloc(sizeof(t_room*) * rooms + 1)))
+    if (!(new = (t_room **)malloc(sizeof(t_room*) * (rooms + 1))))
         return (NULL);
-    ft_bzero(new, rooms + 1);
     tmp = array;
     while (*tmp) // populates the fresh array with the next layer of connecting rooms
     {
+       
         route = (*tmp)->connect;
         while (route)
         {
@@ -43,6 +66,7 @@ static t_room   **create_mad_array(t_room **array, int rooms)
         }
         tmp++;
     }
+    new[i] = NULL;
     return (new);
 }
 
@@ -63,9 +87,14 @@ static int    recursive_check(t_lem_in *lem_in, t_room **array)
         {
             rooms++; // this will be equal to the # connections all the rooms had at that level
             if (route->to == lem_in->end)
+            {	
+                (*tmp)->path_next = lem_in->end;
+                lem_in->end->path_prev = *tmp;
+                lem_in->reverse_path = *tmp;
                 return (1);
-            route = route->next;  
-        }
+            }
+            route = route->next;
+        }    
         tmp++;
     }
     if (!rooms)
@@ -74,7 +103,8 @@ static int    recursive_check(t_lem_in *lem_in, t_room **array)
         return (0);
     if (!(recursive_check(lem_in, new)))
         return (0);
-    return (0);
+    find_path(lem_in, array);
+    return (1);
 }
 
 /*
@@ -91,6 +121,13 @@ void    solve(t_lem_in *lem_in)
         lem_in_error(lem_in);
     array[0] = lem_in->start;
     array[1] = NULL;
-    !(recursive_check(lem_in, array) ? lem_in_error(lem_in) : 0;
+    !(recursive_check(lem_in, array)) ? lem_in_error(lem_in) : 0;
+    while (lem_in->start)
+    {
+        printf("%s\n", lem_in->start->name);
+        lem_in->start = lem_in->start->path_next;
+    }
     free(array);
 }
+
+// -p flag for printing the path

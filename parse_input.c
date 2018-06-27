@@ -93,10 +93,10 @@ static void	is_link(t_lem_in *lem_in)
 
 	str = lem_in->line;
 	dash = ft_strchr(str, '-');
-	add_links(lem_in, &link);
+	add_links(lem_in, &link); //
 	link->from_room = strndup(str, dash - str);
 	link->to_room = ft_strdup((dash + 1));
-	ft_strcmp(link->from_room, link->to_room) == 0 ? lem_in_error(lem_in) : 0;
+	(!LINK_SELF && ft_strcmp(link->from_room, link->to_room) == 0) ? lem_in_error(lem_in) : 0;
 }
 
 void        parse_input(t_lem_in *lem_in)

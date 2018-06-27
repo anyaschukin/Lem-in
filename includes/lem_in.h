@@ -18,6 +18,13 @@
 #include <fcntl.h>
 #include "libft.h"
 
+/* 
+** Debug macros
+** (set to 0 as standard, and corrector can change to try various maps)
+*/
+
+# define LINK_SELF 1 // 1 makes OK, 0 makes error
+
 typedef struct  s_lem_in
 {
 	char            **argv;
@@ -34,6 +41,7 @@ typedef struct  s_lem_in
 	struct s_room 	*start;
 	struct s_room 	*end;
 	struct s_room 	*room;
+	struct s_room 	*reverse_path;
 	struct s_link	*link;
 	struct s_hashtable **table;
 
@@ -48,6 +56,8 @@ typedef struct  s_room
 	int				occupied;
 	struct s_room   *next;
 	struct s_room   *collision;
+	struct s_room	*path_next;
+	struct s_room	*path_prev;
 	struct  s_connection *connect;
 }               t_room;
 
@@ -66,7 +76,7 @@ typedef struct  s_hashtable
 
 typedef struct  s_connection //
 {
-//	char			*from;
+//	t_room			*from;
 	t_room			*to;
 	struct  s_connection *next;
 }               t_connection;

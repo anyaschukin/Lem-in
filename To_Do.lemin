@@ -57,7 +57,7 @@ ROOMS
 {} More than 1 start and 1 end room  // now 
 {} X and Y are ints  // later
 {} is printable  // now
-{} Rooms don't necessarily come in order or start-to-finish
+{} Rooms don't necessarily come in order of start-to-finish
 
 LINKS:
 {} Error: no links
