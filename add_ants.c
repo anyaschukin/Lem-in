@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
 
 static t_ants   *create_ants(t_lem_in *lem_in)
 {
@@ -36,4 +35,5 @@ void    add_ants(t_lem_in *lem_in)
         tmp->next = lem_in->ants;
         lem_in->ants = tmp;
     }
+    lem_in->start->ant_here = lem_in->ants;
 }

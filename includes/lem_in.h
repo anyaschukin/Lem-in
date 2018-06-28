@@ -60,6 +60,7 @@ typedef struct  s_room
 	struct s_room	*path_next;
 	struct s_room	*path_prev;
 	struct  s_connection *connect;
+	struct s_ants	*ant_here;
 }               t_room;
 
 typedef struct  s_link
@@ -98,6 +99,7 @@ unsigned long	generate_hash(char *str, unsigned int room_count);
 void    		lem_in(t_lem_in *lem_in);
 void    		lem_in_error(t_lem_in *lem_in);
 void    		lem_in_free(t_lem_in *lem_in);
+void    		move_ants(t_lem_in *lem_in);
 void    		parse_input(t_lem_in *lem_in);
 t_room  		*point_room(t_lem_in *lem_in, char *str);
 void			start_or_end_room(t_lem_in *lem_in, t_room *room);

@@ -110,7 +110,7 @@ static int    recursive_check(t_lem_in *lem_in, t_room **array)
 /*
 ** Mallocs for an array of rooms
 ** (as each room has its own linked list of connecting rooms)
-** (because we need to pass an array to the recursive_check)
+** (because we need to pass a first array to the recursive_check)
 */
 
 void    solve(t_lem_in *lem_in)
@@ -122,12 +122,11 @@ void    solve(t_lem_in *lem_in)
     array[0] = lem_in->start;
     array[1] = NULL;
     !(recursive_check(lem_in, array)) ? lem_in_error(lem_in) : 0;
-    while (lem_in->start)
-    {
-        printf("%s\n", lem_in->start->name);
-        lem_in->start = lem_in->start->path_next;
-    }
-    add_ants(lem_in);
+//    while (lem_in->start)
+  //  {
+    //    printf("%s\n", lem_in->start->name);
+      //  lem_in->start = lem_in->start->path_next;
+    //}
     free(array);
 }
 

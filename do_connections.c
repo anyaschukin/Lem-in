@@ -71,7 +71,6 @@ void			    do_connections(t_lem_in *lem_in)
 		from = point_room(lem_in, tmp->from_room);
 		to = point_room(lem_in, tmp->to_room);
         assign_connections(lem_in, from, to);
-    //    printf("%s links to %s\n", from->connect->to->name, to->connect->to->name);
 		tmp = tmp->next;
 	}
 }
