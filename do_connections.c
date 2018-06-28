@@ -53,6 +53,7 @@ t_room              *point_room(t_lem_in *lem_in, char *str)
     unsigned int    key;
     
     key = generate_hash(str, lem_in->room_count);
+    lem_in->table[key] == NULL ? lem_in_error(lem_in) : 0;
     point = lem_in->table[key]->ptr;
     while (point && ft_strcmp(str, point->name))
         point = point->collision;
@@ -69,7 +70,7 @@ void			    do_connections(t_lem_in *lem_in)
 	while (tmp != NULL)
 	{
 		from = point_room(lem_in, tmp->from_room);
-		to = point_room(lem_in, tmp->to_room);
+        to = point_room(lem_in, tmp->to_room);
         assign_connections(lem_in, from, to);
 		tmp = tmp->next;
 	}

@@ -117,7 +117,7 @@ void        parse_input(t_lem_in *lem_in)
 		}
 		else if (ft_strchr(lem_in->line, '-'))
 		{
-			(!lem_in->start || !lem_in->end) ? lem_in_error(lem_in) : 0;
+			(!lem_in->start || !lem_in->end || lem_in->start == lem_in->end) ? lem_in_error(lem_in) : 0;
 			is_link(lem_in);
 		}
 		else
