@@ -127,6 +127,7 @@ void    solve(t_lem_in *lem_in)
         printf("%s\n", lem_in->start->name);
         lem_in->start = lem_in->start->path_next;
     }
+    add_ants(lem_in);
     free(array);
 }
 

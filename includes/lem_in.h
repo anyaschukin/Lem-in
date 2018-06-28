@@ -24,6 +24,7 @@
 */
 
 # define LINK_SELF 1 // 1 makes OK, 0 makes error
+# define MAX_ANTS 99999
 
 typedef struct  s_lem_in
 {
@@ -33,7 +34,7 @@ typedef struct  s_lem_in
 
 	int				line_count;
 
-	long            ants; // unsigned?
+	long            ant_c; // unsigned?
 	int             start_c;
 	int             end_c;
 	unsigned int	room_count;
@@ -44,7 +45,7 @@ typedef struct  s_lem_in
 	struct s_room 	*reverse_path;
 	struct s_link	*link;
 	struct s_hashtable **table;
-
+	struct s_ants	*ants;
 }               t_lem_in;
 
 typedef struct  s_room
@@ -81,8 +82,15 @@ typedef struct  s_connection //
 	struct  s_connection *next;
 }               t_connection;
 
+typedef struct	s_ants
+{
+	long			ant_n;
+	struct s_ants	*next;
+}			t_ants;
+
 void			create_hashtable(t_lem_in *lem_in);
 void			create_lem_in(t_lem_in **lem_in, char **argv);
+void    		add_ants(t_lem_in *lem_in);
 void    		add_rooms(t_lem_in *lem_in, t_room **new);
 void			add_links(t_lem_in *lem_in, t_link **new);
 void			do_connections(t_lem_in *lem_in);

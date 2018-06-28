@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 /*
-ants
+ant_c
 rooms – put the rooms in a struct and parse for errors in another function
 links – check the links btwn the rooms last
 start-end
@@ -29,14 +29,14 @@ static void is_ant(t_lem_in *lem_in)
 	j = 0;
 	while (*str) 
 	{
-		if (lem_in->ants)
+		if (lem_in->ant_c)
 			break ;
 		if (*str && (*str == ' ' || *str == '-'))
 			lem_in_error(lem_in);
 		while (*(str + j) && (*(str + j) == '+' || ft_isdigit(*(str + j))))
 			j++;
-		lem_in->ants = ft_atol(str);
-		if (str[j] != '\0' || lem_in->ants <= 0 || lem_in->ants > 2147483647) // Yunus segfaults at 20,000 ants
+		lem_in->ant_c = ft_atol(str);
+		if (str[j] != '\0' || lem_in->ant_c <= 0 || lem_in->ant_c > MAX_ANTS) // Yunus segfaults at 20,000 ants
 			lem_in_error(lem_in);
 	}
 }
@@ -106,13 +106,13 @@ void        parse_input(t_lem_in *lem_in)
 	i = 0;
 	while (get_next_line(0, &lem_in->line) == 1)
 	{
-		if (ft_isdigit(lem_in->line[i]) && !lem_in->ants)
+		if (ft_isdigit(lem_in->line[i]) && !lem_in->ant_c)
 			is_ant(lem_in);
 		else if (lem_in->line[i] == '#')
 			is_command_comment(lem_in);
 		else if (ft_strchr(lem_in->line, ' ') && !(ft_strchr(lem_in->line, '-')) && !(ft_strchr(lem_in->line, '#')))
 		{
-			!lem_in->ants ? lem_in_error(lem_in) : 0;
+			!lem_in->ant_c ? lem_in_error(lem_in) : 0;
 			is_room(lem_in);
 		}
 		else if (ft_strchr(lem_in->line, '-'))
