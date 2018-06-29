@@ -85,26 +85,3 @@ void				create_hashtable(t_lem_in *lem_in)
 		lem_in->table[i++] = NULL;
 	fill_hashtable(lem_in);
 }
-
-
-
-// EXTRA HASH TABLE IMPLEMENTATIONS
-/*
-public int hashCode() {
-int hash = 0;
-for (int i = 0; i < length(); i++)
-hash = (31 * hash) + s[i];
-return hash;
-}
-
-function optimizedHash(key, numOfBuckets) {
-   var H = 31;
-   var total = 0;
-
-   for (var i = 0; i < key.length; ++i) {
-      total += H * total + key.charCodeAt(i);
-   }
-
-   total = total % numOfBuckets;
-   return total;
-}*/

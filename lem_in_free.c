@@ -13,34 +13,14 @@
 #include "lem_in.h"
 #include <stdio.h>
 
-//static void free_connections(t_connection *connect)
-
-static void free_rooms(t_room *room)
+static void free_ants(t_ants *ant)
 {
-    t_room  *tmp;
-    t_room  *delete;
+    t_ants  *tmp;
+    t_ants  *delete;
 
-    if (room)
+    if (ant)
     {
-        tmp = room->next;
-        while (tmp->next != NULL)
-        {
-            delete = tmp;
-            tmp = tmp->next;
-            free(delete);
-        }
-        free(tmp); // do I need to free collision? connect?
-    }
-}
-
-static void free_links(t_link *link)
-{
-    t_link  *tmp;
-    t_link  *delete;
-
-    if (link)
-    {
-        tmp = link->next;
+        tmp = ant;
         while (tmp->next != NULL)
         {
             delete = tmp;
@@ -51,39 +31,85 @@ static void free_links(t_link *link)
     }
 }
 
+static void free_connections(t_connection *connect)
+{
+    t_connection  *tmp;
+    t_connection  *delete;
+
+    if (connect)
+    {
+        tmp = connect;
+        while (tmp->next != NULL)
+        {
+            delete = tmp;
+            tmp = tmp->next;
+            free(delete);
+        }
+        free(tmp);
+    }
+}
+
+static void free_rooms(t_room *room)
+{
+    t_room  *tmp;
+    t_room  *delete;
+
+    if (room)
+    {
+        tmp = room;
+        while (tmp->next != NULL)
+        {
+            delete = tmp;
+            tmp = tmp->next;
+            free(delete->name);
+            delete->connect ? free_connections(delete->connect) : 0;
+            free(delete);
+        }
+        free(tmp->name);
+        free_connections(tmp->connect);
+        free(tmp);
+    }
+}
+
+static void free_links(t_link *link)
+{
+    t_link  *tmp;
+    t_link  *delete;
+ 
+    if (link)
+    {
+        tmp = link;
+        while (tmp->next != NULL)
+        {
+            delete = tmp;
+            tmp = tmp->next;
+            free(delete->from_room);
+            free(delete->to_room);
+            free(delete);
+        }
+        free(tmp->from_room);
+        free(tmp->to_room);
+        free(tmp);
+    }
+}
+
 void lem_in_free(t_lem_in *lem_in)
 {
+    unsigned int i;
+
+    i = 0;
     if (lem_in)
     {
-        if (lem_in->line)
-            free(lem_in->line);
-        if (lem_in->str)
-            free(lem_in->str);
+        free(lem_in->line);
+        free(lem_in->str);
         if (lem_in->room)
             free_rooms(lem_in->room);
         if (lem_in->link)
             free_links(lem_in->link);
-        if (lem_in->table)
-            free(lem_in->table);
+        while (i < lem_in->room_count * 1000)
+            free(lem_in->table[i++]);
+        free(lem_in->table);
+        free_ants(lem_in->ants);
         free(lem_in);
     }
 }
-
-/*
-static void free_hashtable(t_lem_in *lem_in)
-{
-    t_room          *tmp;
-    unsigned int    hash;
-
-    if (lem_in->table)
-    {
-        tmp = lem_in->room;
-        while (lem_in->table)
-        {
-            hash = generate_hash(tmp->name, tmp->room_num);
-            free(lem_in->table[hash]);
-            tmp = tmp->next;
-        }
-        free(lem_in->table);
-    }
-}*/

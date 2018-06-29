@@ -32,7 +32,7 @@ typedef struct  s_lem_in
 	char            *line;
 	char            *str;
 
-	int				line_count;
+//	int				line_count;
 
 	long            ant_c; // unsigned?
 	int             start_c;

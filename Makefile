@@ -17,7 +17,7 @@ all: remove lem-in
 lem-in:
 	make -C libft
 	cp libft/libftprintf.a .
-	gcc -fsanitize=address -g3 -Wall -Werror -Wextra *.c libftprintf.a -o lem-in -I includes -I libft/includes -I libft/libft
+	gcc -g3 -Wall -Werror -Wextra *.c libftprintf.a -o lem-in -I includes -I libft/includes -I libft/libft
 
 remove:
 	rm -rf libftprintf.a lem-in

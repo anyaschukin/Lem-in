@@ -121,11 +121,9 @@ void        parse_input(t_lem_in *lem_in)
 			is_link(lem_in);
 		}
 		else
-		{
-			printf("cry cry babyyyyy\n");
 			lem_in_error(lem_in);
-		} 
-		lem_in->line_count++;
+		free (lem_in->line);
+		lem_in->line = NULL;
 	}
 	create_hashtable(lem_in);
 }

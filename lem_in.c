@@ -31,6 +31,7 @@ int     main(int argc, char **argv)
 		return (0);
 	create_lem_in(&lem_in, argv);
 	lemin(lem_in);
+	lem_in_free(lem_in);
 }
 
 
