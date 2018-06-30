@@ -38,7 +38,7 @@ OBJ =			$(SRC:%.c=%.o)
 SRC_PATH =   	$(SRC:%=$(SRC_DIR)%)
 OBJ_PATH =		$(addprefix $(OBJ_DIR), $(OBJ))
 
-all:			color do_libft $(OBJ_DIR) $(NAME)
+all:			do_libft $(OBJ_DIR) $(NAME)
 				@echo "\\n\033[32;1m LEM-IN COMPLETE \033[0m \\n"
 
 $(OBJ_DIR):
@@ -60,10 +60,7 @@ do_libft:
 				@make -C $(LIBFT)
 				@cp $(LIBFT)/$(LIBFT_A) .
 
-color:
-				@echo "\x1b[36m""\x1b[1A\x1b[M"
-
-clean:			color
+clean:
 				@/bin/rm -rf $(OBJ_DIR) $(LIBFT_A)
 				@make -C $(LIBFT) clean
 				@echo "\\n\033[32;1m Cleaned libft \033[0m"
@@ -75,4 +72,4 @@ fclean:			clean
 
 re: 			fclean all
 
-.PHONY:			all clean flcean re color
+.PHONY:			all clean flcean re
