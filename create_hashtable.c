@@ -21,7 +21,7 @@
 ** DBJ2 hash function
 */
 
-unsigned long		generate_hash(char *str, unsigned int room_count)
+unsigned long	generate_hash(char *str, unsigned int room_count)
 {
 	int				i;
 	int				c;
@@ -51,7 +51,7 @@ static t_hashtable	*create_bucket(t_lem_in *lem_in, t_room *room)
 ** New_room->collided points to the old room
 */
 
-static void			collision_handling(t_lem_in *lem_in, t_room *new_room, unsigned long key)
+static void		collision_handling(t_lem_in *lem_in, t_room *new_room, unsigned long key)
 {
 	new_room->collision = lem_in->table[key]->ptr;
 	lem_in->table[key]->ptr = new_room;
@@ -63,6 +63,7 @@ static void			fill_hashtable(t_lem_in *lem_in)
 	unsigned long	key;
 
 	tmp = lem_in->room;
+	key = 0;
 	while (tmp != NULL)
 	{
 		key = generate_hash(tmp->name, lem_in->room_count);
@@ -74,7 +75,7 @@ static void			fill_hashtable(t_lem_in *lem_in)
 	}
 }
 
-void				create_hashtable(t_lem_in *lem_in)
+void			create_hashtable(t_lem_in *lem_in)
 {
 	unsigned int	i;
 

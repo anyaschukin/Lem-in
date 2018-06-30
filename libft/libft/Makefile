@@ -6,7 +6,7 @@
 #    By: aschukin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/15 17:33:54 by aschukin          #+#    #+#              #
-#    Updated: 2018/06/11 14:29:56 by aschukin         ###   ########.fr        #
+#    Updated: 2018/06/30 15:14:17 by aschukin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ SRCS = ft_atoi.c \
 	   ft_strncat.c \
 	   ft_strncmp.c \
 	   ft_strncpy.c \
+	   ft_strndup.c \
 	   ft_strnequ.c \
 	   ft_strnew.c \
 	   ft_strnstr.c \

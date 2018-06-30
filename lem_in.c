@@ -6,14 +6,14 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 14:17:40 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/05 14:17:42 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/06/30 13:56:25 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
 
-void    lemin(t_lem_in *lem_in)
+void	lemin(t_lem_in *lem_in)
 {
 	parse_input(lem_in);
 	do_connections(lem_in);
@@ -22,7 +22,7 @@ void    lemin(t_lem_in *lem_in)
 	move_ants(lem_in);
 }
 
-int     main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_lem_in *lem_in;
 
@@ -33,7 +33,6 @@ int     main(int argc, char **argv)
 	lemin(lem_in);
 	lem_in_free(lem_in);
 }
-
 
 // simulating collision circumstances
 /*
