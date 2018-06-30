@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
 static int		trace_route_back(t_lem_in *lem_in, t_room **tmp)
 {
@@ -45,7 +45,7 @@ static void		find_path(t_lem_in *lem_in, t_room **array)
 }
 
 /*
-** Takes an array of t_connection linked lists (i.e. connections btwn rooms).
+** Takes an array of t_room linked lists (i.e. connections btwn rooms).
 ** Looks at each list, until that list is at t_room *end.
 ** Goes to the next array element, and goes through that list
 ** until the array is null.
@@ -107,8 +107,7 @@ static int		recursive_check(t_lem_in *lem_in, t_room **array)
 		}
 		tmp++;
 	}
-	if (!rooms || !(new = (create_mad_array(array, rooms)))
-	|| !(recursive_check(lem_in, new)))
+	if (!rooms || !(new = (create_mad_array(array, rooms))) || !(recursive_check(lem_in, new)))
 		return (0);
 	find_path(lem_in, array);
 	return (1);
@@ -130,13 +129,13 @@ void			solve(t_lem_in *lem_in)
 	array[0] = lem_in->start;
 	array[1] = NULL;
 	!(recursive_check(lem_in, array)) ? lem_in_error(lem_in) : 0;
+	free(array);
 	if (lem_in->flag_p)
 	{
 		while (lem_in->start)
 		{
-			printf("%s\n", lem_in->start->name);
+			ft_printf("%s\n", lem_in->start->name);
 			lem_in->start = lem_in->start->path_next;
 		}
 	}
-	free(array);
 }

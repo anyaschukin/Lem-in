@@ -12,7 +12,6 @@
 
 #include "lem_in.h"
 #include <unistd.h>
-#include <stdio.h>
 
 /*
 ** DBJ2 hash function

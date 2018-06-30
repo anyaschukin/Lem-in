@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
 void	move_ants(t_lem_in *lem_in)
 {
@@ -27,16 +27,16 @@ void	move_ants(t_lem_in *lem_in)
 			if (tmp->path_prev && tmp->path_prev->ant_here && !tmp->ant_here)
 			{
 				tmp->ant_here = tmp->path_prev->ant_here;
-				printf("L%ld-%s ", tmp->ant_here->ant_n, tmp->name);
+				ft_printf("L%ld-%s ", tmp->ant_here->ant_n, tmp->name);
 			}
 			else if (tmp->ant_here)
 			{
 				tmp->ant_here = tmp->ant_here->next;
 				if (tmp != lem_in->start && tmp->ant_here)
-					printf("L%ld-%s ", tmp->ant_here->ant_n, tmp->name);
+					ft_printf("L%ld-%s ", tmp->ant_here->ant_n, tmp->name);
 			}
 			tmp = tmp->path_prev;
 		}
-		printf("\n");
+		ft_printf("\n");
 	}
 }
