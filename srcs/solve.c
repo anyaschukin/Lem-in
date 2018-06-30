@@ -21,7 +21,7 @@ static int		trace_route_back(t_lem_in *lem_in, t_room **tmp)
 	return (1);
 }
 
-static void		find_path(t_lem_in *lem_in, t_room **array)
+static void		find_path(t_lem_in *lem_in, t_room **array, t_room **new)
 {
 	t_room			**tmp;
 	t_connection	*route;
@@ -42,12 +42,14 @@ static void		find_path(t_lem_in *lem_in, t_room **array)
 		}
 		tmp++;
 	}
+	free(array);
+	free(new);
 }
 
 /*
-** Takes an array of t_room linked lists (i.e. connections btwn rooms).
-** Looks at each list, until that list is at t_room *end.
-** Goes to the next array element, and goes through that list
+** Takes an array of t_room linked lists,
+** looks at the connections in each list, until that list is at t_room *end.
+** Goes to the next array element, and goes through that list...
 ** until the array is null.
 ** while (*tmp) - populates the fresh array
 ** with the next layer of connecting rooms.
@@ -109,7 +111,7 @@ static int		recursive_check(t_lem_in *lem_in, t_room **array)
 	}
 	if (!rooms || !(new = (create_mad_array(array, rooms))) || !(recursive_check(lem_in, new)))
 		return (0);
-	find_path(lem_in, array);
+	find_path(lem_in, array, new);
 	return (1);
 }
 
