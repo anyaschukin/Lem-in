@@ -42,7 +42,6 @@ static void		find_path(t_lem_in *lem_in, t_room **array, t_room **new)
 		}
 		tmp++;
 	}
-	free(array);
 	free(new);
 }
 
@@ -109,7 +108,7 @@ static int		recursive_check(t_lem_in *lem_in, t_room **array)
 		}
 		tmp++;
 	}
-	if (!rooms || !(new = (create_mad_array(array, rooms))) || !(recursive_check(lem_in, new)))
+	if (!rooms || !(new = (create_mad_array(array, rooms))) || !(recursive_check(lem_in, new))) // last leak
 		return (0);
 	find_path(lem_in, array, new);
 	return (1);

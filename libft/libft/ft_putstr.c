@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 13:47:47 by aschukin          #+#    #+#             */
-/*   Updated: 2018/03/20 15:47:03 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/06/30 21:21:17 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_putstr(char const *s)
 {
-	while (*s != '\0')
-	{
-		ft_putchar(*s);
-		s++;
-	}
+	int	len;
+
+	len = ft_strlen(s);
+	write(1, s, len);
 }
