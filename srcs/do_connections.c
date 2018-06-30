@@ -22,7 +22,8 @@ static t_connection	*create_connections(t_lem_in *lem_in)
 	return (new);
 }
 
-static void			assign_connections(t_lem_in *lem_in, t_room *from, t_room *to)
+static void			assign_connections(t_lem_in *lem_in, t_room *from,
+t_room *to)
 {
 	t_connection	*conn;
 

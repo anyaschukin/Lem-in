@@ -14,14 +14,15 @@
 #include <unistd.h>
 #include <stdio.h>
 
-// 100 is to guarantee that there are 100 hashes per room, to reduce # of collisions
-// 33 is to change the values of each bit after you've shifted them by the prime number
-
 /*
 ** DBJ2 hash function
+** (room_count * 100) guarantees that there are 100 hashes per room,
+** to reduce # of collisions.
+** (key * 33) changes the values of each bit
+** after you've shifted them by the prime number
 */
 
-unsigned long	generate_hash(char *str, unsigned int room_count)
+unsigned long		generate_hash(char *str, unsigned int room_count)
 {
 	int				i;
 	int				c;
@@ -48,10 +49,11 @@ static t_hashtable	*create_bucket(t_lem_in *lem_in, t_room *room)
 
 /*
 ** Adds new_room (the collision) to the head of the bucket
-** New_room->collided points to the old room
+** New_room->collision points to the old room
 */
 
-static void		collision_handling(t_lem_in *lem_in, t_room *new_room, unsigned long key)
+static void			collision_handling(t_lem_in *lem_in, t_room *new_room,
+unsigned long key)
 {
 	new_room->collision = lem_in->table[key]->ptr;
 	lem_in->table[key]->ptr = new_room;
@@ -75,12 +77,13 @@ static void			fill_hashtable(t_lem_in *lem_in)
 	}
 }
 
-void			create_hashtable(t_lem_in *lem_in)
+void				create_hashtable(t_lem_in *lem_in)
 {
 	unsigned int	i;
 
 	i = 0;
-	if (!(lem_in->table = (t_hashtable**)malloc(sizeof(t_hashtable) * lem_in->room_count * 1000))) //
+	if (!(lem_in->table = (t_hashtable**)malloc(sizeof(t_hashtable)
+	* lem_in->room_count * 1000)))
 		lem_in_error(lem_in);
 	while (i < lem_in->room_count)
 		lem_in->table[i++] = NULL;

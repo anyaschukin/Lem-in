@@ -23,8 +23,8 @@
 ** (set to 0 as standard, and corrector can change to try various maps)
 */
 
-# define LINK_SELF 1 // 1 makes OK, 0 makes error
 # define MAX_ANTS 99999
+# define LINK_SELF 1 // 1 makes OK, 0 makes error
 
 typedef struct	s_lem_in
 {
@@ -33,6 +33,7 @@ typedef struct	s_lem_in
 	char				*str;
 
 //	int				line_count;
+	int					flag_p : 1;
 
 	long				ant_c;
 	int					start_c;

@@ -6,19 +6,30 @@
 #    By: aschukin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/26 10:27:55 by aschukin          #+#    #+#              #
-#    Updated: 2018/06/02 00:14:08 by aschukin         ###   ########.fr        #
+#    Updated: 2018/06/30 17:40:12 by aschukin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 SRC_PATH = sources
-SRC_NAME = ft_printf.c \
-			ft_init_struct.c ft_check_flags.c ft_check_length.c \
-			ft_check_precision.c ft_check_width.c ft_check_errors.c \
+SRC_NAME = 	ft_printf.c \
+			ft_init_struct.c \
+			ft_check_flags.c \
+			ft_check_length.c \
+			ft_check_precision.c \
+			ft_check_width.c \
+			ft_check_errors.c \
 			ft_printf_conversion.c \
-			flag_c.c flag_d.c flag_p.c flag_o.c flag_s.c flag_u.c flag_x.c \
-			flag_percent.c combine.c
+			flag_c.c \
+			flag_d.c \
+			flag_p.c \
+			flag_o.c \
+			flag_s.c \
+			flag_u.c \
+			flag_x.c \
+			flag_percent.c \
+			combine.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
@@ -37,6 +48,7 @@ LIB = libft/libft.a
 .PHONY: all, clean, fclean, re
 
 all: $(NAME)
+	@echo "\\n\033[32;1m libftprintf COMPLETE \033[0m \\n"
 
 libftcomp:
 	@make all -C libft/
@@ -55,6 +67,9 @@ $(INC_PATH):
 	@mkdir $(INC_PATH) 2> /dev/null || true
 	@mv $(INC_NAME) $(INC_PATH)
 
+colour:
+	@echo "\x1b[36m""\x1b[1A\x1b[M"
+
 clean:
 	@make clean -C libft/
 	@rm -f $(OBJ)
@@ -64,5 +79,6 @@ clean:
 fclean: clean
 	@make fclean -C libft/
 	@rm -f $(NAME)
+	@echo "\\n\033[32;1m Cleaned $(NAME) \033[0m \\n"
 
 re: fclean all
