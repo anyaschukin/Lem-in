@@ -86,15 +86,13 @@ static t_room	**create_mad_array(t_room **array, int rooms)
 ** rooms++ : equals to the # connections all the rooms had at that level
 */
 
-static int		recursive_check(t_lem_in *lem_in, t_room **array)
+static int		recursive_check(t_lem_in *lem_in, t_room **array,
+t_room **new, int rooms)
 {
 	t_room			**tmp;
-	t_room			**new;
 	t_connection	*route;
-	int				rooms;
 
 	tmp = array;
-	rooms = 0;
 	while (*tmp)
 	{
 		(*tmp)->occupied = 1;
@@ -108,8 +106,12 @@ static int		recursive_check(t_lem_in *lem_in, t_room **array)
 		}
 		tmp++;
 	}
-	if (!rooms || !(new = (create_mad_array(array, rooms))) || !(recursive_check(lem_in, new))) // last leak
+	if (!rooms || !(new = (create_mad_array(array, rooms)))
+	|| !(recursive_check(lem_in, new, NULL, 0)))
+	{
+		free(new);
 		return (0);
+	}
 	find_path(lem_in, array, new);
 	return (1);
 }
@@ -129,14 +131,7 @@ void			solve(t_lem_in *lem_in)
 		lem_in_error(lem_in);
 	array[0] = lem_in->start;
 	array[1] = NULL;
-	!(recursive_check(lem_in, array)) ? lem_in_error(lem_in) : 0;
+	!(recursive_check(lem_in, array, NULL, 0)) ? lem_in_error(lem_in) : 0;
 	free(array);
-	if (lem_in->flag_p)
-	{
-		while (lem_in->start)
-		{
-			ft_printf("%s\n", lem_in->start->name);
-			lem_in->start = lem_in->start->path_next;
-		}
-	}
+	// if -p flag, print path in RED
 }

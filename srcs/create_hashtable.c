@@ -84,7 +84,7 @@ void				create_hashtable(t_lem_in *lem_in)
 	if (!(lem_in->table = (t_hashtable**)malloc(sizeof(t_hashtable)
 	* lem_in->room_count * 1000)))
 		lem_in_error(lem_in);
-	while (i < lem_in->room_count)
+	while (i < lem_in->room_count * 1000)
 		lem_in->table[i++] = NULL;
 	fill_hashtable(lem_in);
 }
