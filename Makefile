@@ -6,7 +6,7 @@
 #    By: aschukin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/08 10:56:19 by aschukin          #+#    #+#              #
-#    Updated: 2018/06/22 14:57:53 by aschukin         ###   ########.fr        #
+#    Updated: 2018/07/09 19:47:37 by aschukin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC =			add_ants.c \
 				lem_in_free.c \
 				move_ants.c \
 				parse_input.c \
+				print_path.c \
 				solve.c
 
 OBJ =			$(SRC:%.c=%.o)

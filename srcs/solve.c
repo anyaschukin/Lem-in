@@ -128,10 +128,10 @@ void			solve(t_lem_in *lem_in)
 	t_room			**array;
 
 	if (!(array = (t_room **)malloc(sizeof(t_room*) * 2)))
-		lem_in_error(lem_in);
+		lem_in_error(lem_in, 1);
 	array[0] = lem_in->start;
 	array[1] = NULL;
-	!(recursive_check(lem_in, array, NULL, 0)) ? lem_in_error(lem_in) : 0;
+	!(recursive_check(lem_in, array, NULL, 0)) ? lem_in_error(lem_in, 13) : 0;
 	free(array);
-	// if -p flag, print path in RED
+	lem_in->flag_p == 1 ? print_path(lem_in) : 0;
 }

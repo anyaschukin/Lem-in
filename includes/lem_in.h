@@ -24,7 +24,13 @@
 */
 
 # define MAX_ANTS 99999
-# define LINK_SELF 1 // 1 makes OK, 0 makes error
+
+/*
+** 1 makes OK, 0 makes error
+*/
+
+# define LINK_SELF 1
+# define COMMENTS 1
 
 typedef struct	s_lem_in
 {
@@ -32,8 +38,7 @@ typedef struct	s_lem_in
 	char				*line;
 	char				*str;
 
-//	int				line_count;
-	int					flag_p : 1;
+	int					flag_p;
 
 	long				ant_c;
 	int					start_c;
@@ -89,6 +94,7 @@ typedef struct	s_ants
 	struct s_ants		*next;
 }				t_ants;
 
+void			check_print_path_flag(t_lem_in *lem_in);
 void			create_hashtable(t_lem_in *lem_in);
 void			create_lem_in(t_lem_in **lem_in, char **argv);
 void			add_ants(t_lem_in *lem_in);
@@ -97,15 +103,13 @@ void			add_links(t_lem_in *lem_in, t_link **new);
 void			do_connections(t_lem_in *lem_in);
 unsigned long	generate_hash(char *str, unsigned int room_count);
 void			lem_in(t_lem_in *lem_in);
-void			lem_in_error(t_lem_in *lem_in);
+void			lem_in_error(t_lem_in *lem_in, int error);
 void			lem_in_free(t_lem_in *lem_in);
 void			move_ants(t_lem_in *lem_in);
 void			parse_input(t_lem_in *lem_in);
 t_room			*point_room(t_lem_in *lem_in, char *str);
+void			print_path(t_lem_in *lem_in);
 void			start_or_end_room(t_lem_in *lem_in, t_room *room);
 void			solve(t_lem_in *lem_in);
 
 #endif
-
-// create an int on/off, so as you go through the rooms,
-// you turn the room "on" to indicate it's occupied

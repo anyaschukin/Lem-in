@@ -31,7 +31,7 @@ static t_room	*create_rooms(t_lem_in *lem_in)
 	t_room		*new;
 
 	if (!(new = (t_room *)malloc(sizeof(t_room))))
-		lem_in_error(lem_in);
+		lem_in_error(lem_in, 1);
 	ft_bzero(new, sizeof(t_room));
 	return (new);
 }
@@ -49,7 +49,7 @@ void			add_rooms(t_lem_in *lem_in, t_room **new)
 	else
 	{
 		if (!((*new) = create_rooms(lem_in)))
-			lem_in_error(lem_in);
+			lem_in_error(lem_in, 1);
 		while (tmp->next != NULL)
 			tmp = tmp->next;
 		tmp->next = (*new);

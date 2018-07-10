@@ -17,7 +17,7 @@ static t_connection	*create_connections(t_lem_in *lem_in)
 	t_connection	*new;
 
 	if (!(new = (t_connection *)malloc(sizeof(t_connection))))
-		lem_in_error(lem_in);
+		lem_in_error(lem_in, 1);
 	ft_bzero(new, sizeof(t_connection));
 	return (new);
 }
@@ -53,7 +53,7 @@ t_room				*point_room(t_lem_in *lem_in, char *str)
 	unsigned int	key;
 
 	key = generate_hash(str, lem_in->room_count);
-	lem_in->table[key] == NULL ? lem_in_error(lem_in) : 0;
+	lem_in->table[key] == NULL ? lem_in_error(lem_in, 15) : 0;
 	point = lem_in->table[key]->ptr;
 	while (point && ft_strcmp(str, point->name))
 		point = point->collision;

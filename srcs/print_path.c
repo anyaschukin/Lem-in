@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_ants.c                                         :+:      :+:    :+:   */
+/*   print_lem_in.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/30 13:49:36 by aschukin          #+#    #+#             */
-/*   Updated: 2018/06/30 13:49:38 by aschukin         ###   ########.fr       */
+/*   Created: 2018/07/10 20:10:49 by aschukin          #+#    #+#             */
+/*   Updated: 2018/07/10 21:04:55 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include "ft_printf.h"
 
-static t_ants	*create_ants(t_lem_in *lem_in)
+void	print_path(t_lem_in *lem_in)
 {
-	t_ants		*new;
+	t_room	*tmp;
 
-	if (!(new = (t_ants *)malloc(sizeof(t_ants))))
-		lem_in_error(lem_in, 1);
-	ft_bzero(new, sizeof(t_ants));
-	return (new);
+	tmp = lem_in->start;
+	if (lem_in->flag_p)
+	{
+		ft_printf("Path:\n");
+		while (tmp && tmp != lem_in->end)
+		{
+			ft_printf("%s -> ", tmp->name);
+			tmp = tmp->path_next;
+		}
+		ft_printf("%s\n", lem_in->end->name);
+	}
 }
 
-void			add_ants(t_lem_in *lem_in)
+void	check_print_path_flag(t_lem_in *lem_in)
 {
-	t_ants		*tmp;
-	long		i;
-
-	i = 1;
-	while (lem_in->ant_c--)
+	while (*lem_in->argv)
 	{
-		tmp = create_ants(lem_in);
-		tmp->ant_n = lem_in->ant_c + 1;
-		tmp->next = lem_in->ants;
-		lem_in->ants = tmp;
+		if (!ft_strcmp(*lem_in->argv, "-p"))
+			lem_in->flag_p = 1;
+		lem_in->argv++;
 	}
-	lem_in->start->ant_here = lem_in->ants;
 }

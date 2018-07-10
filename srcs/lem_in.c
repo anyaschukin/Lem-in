@@ -32,18 +32,3 @@ int		main(int argc, char **argv)
 	lemin(lem_in);
 	lem_in_free(lem_in);
 }
-
-// simulating collision circumstances
-/*
-	key = generate_hash("room8", lem_in->room_count);
-	lem_in->table[key]->ptr->name = ft_strdup("Dav");
-	tmp = point_room(lem_in, "room8", lem_in->room_count);
-	printf("name = %s\n y = %d\n", tmp->name, tmp->y);
-*/
-/*
-	start = lem_in->end;
-	while (start->connect)
-	{
-		printf("%s links to %s\n", start->name, start->connect->to->name);
-		start->connect = start->connect->next;
-	}*/

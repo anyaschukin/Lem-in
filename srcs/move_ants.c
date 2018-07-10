@@ -17,7 +17,7 @@ void	move_ants(t_lem_in *lem_in)
 {
 	t_room	*tmp;
 
-	while (1)
+	while (1 && !lem_in->flag_p)
 	{
 		tmp = lem_in->end;
 		if (tmp->ant_here != NULL && tmp->ant_here->next == NULL)

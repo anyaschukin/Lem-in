@@ -17,7 +17,7 @@ static t_link	*create_links(t_lem_in *lem_in)
 	t_link		*new;
 
 	if (!(new = (t_link *)malloc(sizeof(t_link))))
-		lem_in_error(lem_in);
+		lem_in_error(lem_in, 1);
 	ft_bzero(new, sizeof(t_link));
 	return (new);
 }

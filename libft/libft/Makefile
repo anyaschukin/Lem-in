@@ -6,7 +6,7 @@
 #    By: aschukin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/15 17:33:54 by aschukin          #+#    #+#              #
-#    Updated: 2018/06/30 17:49:48 by aschukin         ###   ########.fr        #
+#    Updated: 2018/07/10 20:08:46 by aschukin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ GNL = get_next_line.h
 SRCS = ft_atoi.c \
 	   ft_atol.c \
 	   ft_bzero.c \
-	   ft_count.c\
+	   ft_count.c \
 	   ft_delim_count.c \
 	   error_exit.c \
 	   ft_isalnum.c \

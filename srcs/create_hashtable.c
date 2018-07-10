@@ -12,7 +12,6 @@
 
 #include "lem_in.h"
 #include <unistd.h>
-#include <stdio.h>
 
 /*
 ** DBJ2 hash function
@@ -41,7 +40,7 @@ static t_hashtable	*create_bucket(t_lem_in *lem_in, t_room *room)
 	t_hashtable	*new;
 
 	if (!(new = (t_hashtable*)malloc(sizeof(*new))))
-		lem_in_error(lem_in);
+		lem_in_error(lem_in, 1);
 	new->ptr = room;
 	return (new);
 }
@@ -83,8 +82,8 @@ void				create_hashtable(t_lem_in *lem_in)
 	i = 0;
 	if (!(lem_in->table = (t_hashtable**)malloc(sizeof(t_hashtable)
 	* lem_in->room_count * 1000)))
-		lem_in_error(lem_in);
+		lem_in_error(lem_in, 1);
 	while (i < lem_in->room_count * 1000)
 		lem_in->table[i++] = NULL;
-	fill_hashtable(lem_in);	
+	fill_hashtable(lem_in);
 }

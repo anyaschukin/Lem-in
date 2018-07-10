@@ -108,7 +108,9 @@ void		lem_in_free(t_lem_in *lem_in)
 		if (lem_in->table)
 		{
 			while (i < lem_in->room_count * 1000)
+			{
 				free(lem_in->table[i++]);
+			}
 		}
 		free(lem_in->table);
 		free_ants(lem_in->ants);
