@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_lem_in.c                                     :+:      :+:    :+:   */
+/*   print_options.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/10 20:10:49 by aschukin          #+#    #+#             */
-/*   Updated: 2018/07/10 21:04:55 by aschukin         ###   ########.fr       */
+/*   Created: 2018/07/10 22:19:38 by aschukin          #+#    #+#             */
+/*   Updated: 2018/07/10 22:19:40 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,30 @@ void	print_path(t_lem_in *lem_in)
 	}
 }
 
-void	check_print_path_flag(t_lem_in *lem_in)
+void	print_rooms(t_lem_in *lem_in)
+{
+	t_room	*tmp;
+
+	tmp = lem_in->room;
+	if (lem_in->flag_r)
+	{
+		ft_printf("Rooms:\n");
+		while (tmp)
+		{
+			ft_printf("%s\n", tmp->name);
+			tmp = tmp->next;
+		}
+	}
+}
+
+void	print_options(t_lem_in *lem_in)
 {
 	while (*lem_in->argv)
 	{
 		if (!ft_strcmp(*lem_in->argv, "-p"))
 			lem_in->flag_p = 1;
+		if (!ft_strcmp(*lem_in->argv, "-r"))
+			lem_in->flag_r = 1;
 		lem_in->argv++;
 	}
 }

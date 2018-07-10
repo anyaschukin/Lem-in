@@ -39,6 +39,7 @@ typedef struct	s_lem_in
 	char				*str;
 
 	int					flag_p;
+	int					flag_r;
 
 	long				ant_c;
 	int					start_c;
@@ -94,12 +95,11 @@ typedef struct	s_ants
 	struct s_ants		*next;
 }				t_ants;
 
-void			check_print_path_flag(t_lem_in *lem_in);
-void			create_hashtable(t_lem_in *lem_in);
-void			create_lem_in(t_lem_in **lem_in, char **argv);
 void			add_ants(t_lem_in *lem_in);
 void			add_rooms(t_lem_in *lem_in, t_room **new);
 void			add_links(t_lem_in *lem_in, t_link **new);
+void			create_hashtable(t_lem_in *lem_in);
+void			create_lem_in(t_lem_in **lem_in, char **argv);
 void			do_connections(t_lem_in *lem_in);
 unsigned long	generate_hash(char *str, unsigned int room_count);
 void			lem_in(t_lem_in *lem_in);
@@ -109,6 +109,8 @@ void			move_ants(t_lem_in *lem_in);
 void			parse_input(t_lem_in *lem_in);
 t_room			*point_room(t_lem_in *lem_in, char *str);
 void			print_path(t_lem_in *lem_in);
+void			print_options(t_lem_in *lem_in);
+void			print_rooms(t_lem_in *lem_in);
 void			start_or_end_room(t_lem_in *lem_in, t_room *room);
 void			solve(t_lem_in *lem_in);
 

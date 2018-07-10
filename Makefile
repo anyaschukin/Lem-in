@@ -31,7 +31,7 @@ SRC =			add_ants.c \
 				lem_in_free.c \
 				move_ants.c \
 				parse_input.c \
-				print_path.c \
+				print_options.c \
 				solve.c
 
 OBJ =			$(SRC:%.c=%.o)

@@ -75,7 +75,6 @@ static void	is_room(t_lem_in *lem_in)
 		str--;
 	room->x = ft_atoi(str);
 	room->name = ft_strndup(str_start, str - str_start);
-	ft_strchr(room->name, ' ') ? lem_in_error(lem_in, 14) : 0;
 	lem_in->room_count++;
 	if (lem_in->start_c == 1 || lem_in->end_c == 1)
 		start_or_end_room(lem_in, room);
@@ -103,7 +102,7 @@ static void	is_link(t_lem_in *lem_in)
 
 void		parse_input(t_lem_in *lem_in)
 {
-	check_print_path_flag(lem_in);
+	print_options(lem_in);
 	while (get_next_line(0, &lem_in->line) == 1)
 	{
 		if ((ft_isdigit(lem_in->line[0]) || ft_isdigit(lem_in->line[1]))

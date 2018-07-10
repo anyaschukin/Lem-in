@@ -134,4 +134,5 @@ void			solve(t_lem_in *lem_in)
 	!(recursive_check(lem_in, array, NULL, 0)) ? lem_in_error(lem_in, 13) : 0;
 	free(array);
 	lem_in->flag_p == 1 ? print_path(lem_in) : 0;
+	lem_in->flag_r == 1 ? print_rooms(lem_in) : 0;
 }

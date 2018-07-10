@@ -53,7 +53,7 @@ t_room				*point_room(t_lem_in *lem_in, char *str)
 	unsigned int	key;
 
 	key = generate_hash(str, lem_in->room_count);
-	lem_in->table[key] == NULL ? lem_in_error(lem_in, 15) : 0;
+	lem_in->table[key] == NULL ? lem_in_error(lem_in, 14) : 0;
 	point = lem_in->table[key]->ptr;
 	while (point && ft_strcmp(str, point->name))
 		point = point->collision;
