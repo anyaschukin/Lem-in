@@ -12,6 +12,7 @@
 
 #include "lem_in.h"
 #include <unistd.h>
+#include <stdio.h>
 
 /*
 ** DBJ2 hash function
@@ -30,7 +31,6 @@ unsigned long		generate_hash(char *str, unsigned int room_count)
 	i = 0;
 	c = str[i];
 	key = 7919;
-	room_count < 100 ? room_count = 100 : 0;
 	while ((c = str[i++]))
 		key += (key * 33) + c;
 	return (key % (room_count * 100));
@@ -86,5 +86,5 @@ void				create_hashtable(t_lem_in *lem_in)
 		lem_in_error(lem_in);
 	while (i < lem_in->room_count * 1000)
 		lem_in->table[i++] = NULL;
-	fill_hashtable(lem_in);
+	fill_hashtable(lem_in);	
 }
