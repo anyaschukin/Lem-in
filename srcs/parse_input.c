@@ -41,7 +41,8 @@ static void	is_command_comment(t_lem_in *lem_in)
 	int i;
 
 	i = 0;
-	!lem_in->ant_c ? lem_in_error(lem_in, 3) : 0;
+	if ((lem_in->start_c || lem_in->end_c) && !lem_in->ant_c)
+		lem_in_error(lem_in, 3);
 	if (ft_strcmp(lem_in->line, "##start") == 0)
 		lem_in->start_c++;
 	else if (ft_strcmp(lem_in->line, "##end") == 0)

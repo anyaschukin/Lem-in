@@ -31,6 +31,7 @@
 
 # define LINK_SELF 1
 # define COMMENTS 1
+# define NAME_SPACE 0
 
 typedef struct	s_lem_in
 {
@@ -46,6 +47,7 @@ typedef struct	s_lem_in
 	int					end_c;
 	unsigned int		room_count;
 
+	struct s_parse		*map;
 	struct s_room		*start;
 	struct s_room		*end;
 	struct s_room		*room;
