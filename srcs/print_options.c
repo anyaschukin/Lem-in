@@ -17,6 +17,12 @@ void	print_path(t_lem_in *lem_in)
 {
 	t_room	*tmp;
 
+	tmp = lem_in->end;
+	while (tmp && tmp->path_prev && tmp->path_prev != lem_in->start)
+	{
+		tmp->path_prev->path_next = tmp;
+		tmp = tmp->path_prev;
+	}
 	tmp = lem_in->start;
 	if (lem_in->flag_p)
 	{
