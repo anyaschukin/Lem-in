@@ -50,7 +50,7 @@ $(NAME):		$(OBJ_PATH)
 				@gcc $(OBJ_PATH) *.a -o $(NAME) \
 					-I includes -I libft/includes
 
-$(OBJ_PATH):	$(SRC_PATH)
+$(OBJ_PATH):	$(SRC_PATH) includes/lem_in.h
 				@$(MAKE) $(OBJ)
 
 $(OBJ):			$(LIBFT_A)
