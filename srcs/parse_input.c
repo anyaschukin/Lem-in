@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include "ft_printf.h"
 
 static void	is_ant(t_lem_in *lem_in)
 {
@@ -40,6 +41,7 @@ static void	is_command_comment(t_lem_in *lem_in)
 	int i;
 
 	i = 0;
+	!lem_in->ant_c ? lem_in_error(lem_in, 3) : 0;
 	if (ft_strcmp(lem_in->line, "##start") == 0)
 		lem_in->start_c++;
 	else if (ft_strcmp(lem_in->line, "##end") == 0)
@@ -117,9 +119,11 @@ void		parse_input(t_lem_in *lem_in)
 			is_link(lem_in);
 		else
 			lem_in_error(lem_in, 0);
+		(!lem_in->flag_p && !lem_in->flag_r) ? ft_printf("%s\n", lem_in->line) : 0;
 		free(lem_in->line);
 		lem_in->line = NULL;
 	}
+	(!lem_in->flag_p && !lem_in->flag_r) ? ft_printf("\n") : 0;
 	lem_in->link == NULL ? lem_in_error(lem_in, 12) : 0;
 	create_hashtable(lem_in);
 }
