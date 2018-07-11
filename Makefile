@@ -10,8 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-LEM_IN =		lem_in
-NAME =			$(LEM_IN)
+NAME =			lem-in
 LIBFT_A =		libftprintf.a
 
 COMP =			gcc -Wall -Werror -Wextra -I includes -I libft/includes -I libft/libft -c -o
@@ -47,7 +46,7 @@ $(OBJ_DIR):
 				@echo Create: Object directory
 
 $(NAME):		$(OBJ_PATH)
-				@gcc $(OBJ_PATH) *.a -o lem-in \
+				@gcc $(OBJ_PATH) *.a -o $(NAME) \
 					-I includes -I libft/includes
 
 $(OBJ_PATH):	$(SRC_PATH)
@@ -67,7 +66,7 @@ clean:
 				@echo "\\n\033[32;1m Cleaned libft \033[0m"
 
 fclean:			clean
-				@/bin/rm -f $(LEM_IN) $(LIBFT_A)
+				@/bin/rm -f $(NAME) $(LIBFT_A)
 				@make -C $(LIBFT) fclean
 				@echo "\033[32;1m Cleaned $(NAME) \033[0m \\n"
 
