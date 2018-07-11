@@ -107,6 +107,8 @@ void		parse_input(t_lem_in *lem_in)
 	print_options(lem_in);
 	while (get_next_line(0, &lem_in->line) == 1)
 	{
+		if (!lem_in->flag_p && !lem_in->flag_r)
+			ft_printf("%s\n", lem_in->line);
 		if ((ft_isdigit(lem_in->line[0]) || ft_isdigit(lem_in->line[1]))
 		&& !lem_in->ant_c)
 			is_ant(lem_in);
@@ -119,7 +121,6 @@ void		parse_input(t_lem_in *lem_in)
 			is_link(lem_in);
 		else
 			lem_in_error(lem_in, 0);
-		(!lem_in->flag_p && !lem_in->flag_r) ? ft_printf("%s\n", lem_in->line) : 0;
 		free(lem_in->line);
 		lem_in->line = NULL;
 	}
