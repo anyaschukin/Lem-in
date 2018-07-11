@@ -28,6 +28,7 @@ static void		error_messages(int error)
 	error == 12 ? write(1, "Error: no links or empty map\n", 29) : 0;
 	error == 13 ? write(1, "Error: no path\n", 15) : 0;
 	error == 14 ? write(1, "Error: link to unknown room\n", 28) : 0;
+	error == 15 ? write(1, "Error: more than 3 coordinates\n", 31) : 0;
 }
 
 void			lem_in_error(t_lem_in *lem_in, int error)
