@@ -124,12 +124,9 @@ void		parse_input(t_lem_in *lem_in)
 			is_link(lem_in);
 		else
 			lem_in_error(lem_in, 0);
-//		if (!lem_in->flag_p && !lem_in->flag_r)
-//			ft_printf("%s\n", lem_in->line);
 		free(lem_in->line);
 		lem_in->line = NULL;
 	}
-//	(!lem_in->flag_p && !lem_in->flag_r) ? ft_printf("\n") : 0;
 	lem_in->link == NULL ? lem_in_error(lem_in, 12) : 0;
 	create_hashtable(lem_in);
 }
