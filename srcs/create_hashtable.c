@@ -55,6 +55,8 @@ unsigned long key)
 {
 	new_room->collision = lem_in->table[key]->ptr;
 	lem_in->table[key]->ptr = new_room;
+	if (!(ft_strcmp(new_room->name, lem_in->table[key]->ptr->name)))
+		lem_in_error(lem_in, 16);
 }
 
 static void			fill_hashtable(t_lem_in *lem_in)

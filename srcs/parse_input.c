@@ -106,27 +106,30 @@ static void	is_link(t_lem_in *lem_in)
 
 void		parse_input(t_lem_in *lem_in)
 {
+	t_map	*map;
+
 	print_options(lem_in);
 	while (get_next_line(0, &lem_in->line) == 1)
 	{
+		add_map(lem_in, &map);
 		if ((ft_isdigit(lem_in->line[0]) || ft_isdigit(lem_in->line[1]))
 		&& !lem_in->ant_c)
 			is_ant(lem_in);
 		else if (lem_in->line[0] == '#')
 			is_command_comment(lem_in);
 		else if (ft_strchr(lem_in->line, ' ') && !(ft_strchr(lem_in->line, '-'))
-		&& !(ft_strchr(lem_in->line, '#')))
+		&& !(ft_strchr(lem_in->line, '#')) && !lem_in->link)
 			is_room(lem_in);
 		else if (ft_strchr(lem_in->line, '-'))
 			is_link(lem_in);
 		else
 			lem_in_error(lem_in, 0);
-		if (!lem_in->flag_p && !lem_in->flag_r)
-			ft_printf("%s\n", lem_in->line);
+//		if (!lem_in->flag_p && !lem_in->flag_r)
+//			ft_printf("%s\n", lem_in->line);
 		free(lem_in->line);
 		lem_in->line = NULL;
 	}
-	(!lem_in->flag_p && !lem_in->flag_r) ? ft_printf("\n") : 0;
+//	(!lem_in->flag_p && !lem_in->flag_r) ? ft_printf("\n") : 0;
 	lem_in->link == NULL ? lem_in_error(lem_in, 12) : 0;
 	create_hashtable(lem_in);
 }

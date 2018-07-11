@@ -47,7 +47,7 @@ typedef struct	s_lem_in
 	int					end_c;
 	unsigned int		room_count;
 
-	struct s_parse		*map;
+	struct s_map		*map; //
 	struct s_room		*start;
 	struct s_room		*end;
 	struct s_room		*room;
@@ -56,6 +56,13 @@ typedef struct	s_lem_in
 	struct s_hashtable	**table;
 	struct s_ants		*ants;
 }				t_lem_in;
+
+typedef struct	s_map //
+{
+	char				*line;
+	int					line_num;
+	struct s_map		*next;
+}				t_map;
 
 typedef struct	s_room
 {
@@ -103,6 +110,7 @@ void			add_links(t_lem_in *lem_in, t_link **new);
 void			create_hashtable(t_lem_in *lem_in);
 void			create_lem_in(t_lem_in **lem_in, char **argv);
 void			do_connections(t_lem_in *lem_in);
+void            free_map(t_map *map);
 unsigned long	generate_hash(char *str, unsigned int room_count);
 void			lem_in(t_lem_in *lem_in);
 void			lem_in_error(t_lem_in *lem_in, int error);
@@ -110,6 +118,8 @@ void			lem_in_free(t_lem_in *lem_in);
 void			move_ants(t_lem_in *lem_in);
 void			parse_input(t_lem_in *lem_in);
 t_room			*point_room(t_lem_in *lem_in, char *str);
+void			add_map(t_lem_in *lem_in, t_map **map);
+void            print_map(t_lem_in *lem_in);
 void			print_path(t_lem_in *lem_in);
 void			print_options(t_lem_in *lem_in);
 void			print_rooms(t_lem_in *lem_in);

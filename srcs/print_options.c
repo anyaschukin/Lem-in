@@ -48,6 +48,9 @@ void	print_rooms(t_lem_in *lem_in)
 
 void	print_options(t_lem_in *lem_in)
 {
+	int		count;
+
+	count = 0;
 	while (*lem_in->argv)
 	{
 		if (!ft_strcmp(*lem_in->argv, "-p"))
@@ -55,5 +58,10 @@ void	print_options(t_lem_in *lem_in)
 		if (!ft_strcmp(*lem_in->argv, "-r"))
 			lem_in->flag_r = 1;
 		lem_in->argv++;
+		count++;
 	}
+	if (!lem_in->flag_p && !lem_in->flag_r && count > 1)
+		lem_in_error(lem_in, 18);
+	if ((lem_in->flag_p || lem_in->flag_r) && count > 2)
+		lem_in_error(lem_in, 18);
 }

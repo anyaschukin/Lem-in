@@ -135,4 +135,5 @@ void			solve(t_lem_in *lem_in)
 	free(array);
 	lem_in->flag_p == 1 ? print_path(lem_in) : 0;
 	lem_in->flag_r == 1 ? print_rooms(lem_in) : 0;
+	(!lem_in->flag_p && !lem_in->flag_r) ? print_map(lem_in) : 0;
 }

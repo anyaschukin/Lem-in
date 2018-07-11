@@ -25,6 +25,7 @@ SRC =			add_ants.c \
 				create_hashtable.c \
 				create_lem_in.c \
 				do_connections.c \
+				handle_map.c \
 				lem_in.c \
 				lem_in_error.c \
 				lem_in_free.c \

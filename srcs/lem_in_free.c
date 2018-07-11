@@ -101,6 +101,8 @@ void		lem_in_free(t_lem_in *lem_in)
 	{
 		free(lem_in->line);
 		free(lem_in->str);
+		if (lem_in->map) //
+			free_map(lem_in->map);
 		if (lem_in->room)
 			free_rooms(lem_in->room);
 		if (lem_in->link)
