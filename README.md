@@ -28,7 +28,7 @@ The map
 Upon successfully finding the shortest path, ```lem-in``` will display the parsed input, and each ant's move <br />
 from room to room. <br />
 
-![screen capture of lem_in](./images/lem-in.png)
+![screen capture of lem_in](./images/lemin.png)
 <br />
 
 The program must handle errors carefully, or your program risks crashing violently. In no way can it quit <br />
