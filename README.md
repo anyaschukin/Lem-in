@@ -28,7 +28,7 @@ The map
 Upon successfully finding the shortest path, ```lem-in``` will display the parsed input, and each ant's move <br />
 from room to room. <br />
 
-![screen capture of lem_in](./images/lem-in.jpg)
+![screen capture of lem_in](./images/lem-in.png)
 <br />
 
 The program must handle errors carefully, or your program risks crashing violently. In no way can it quit <br />
@@ -57,7 +57,7 @@ and can also be considered valid or invalid input. <br />
 (so a string, separated by 2 spaces). But what if a room name has a space inside it? Turning on this macro allows <br />
 rooms to be formatted as ```Big Room 1 2```, ```Big Beautiful Room 1 2```, etc. <br />
 
-![screen capture of define](./images/lemin.jpg)
+![image of defines](./images/lemin.png)
 <br />
 
 Once you have overcome the intial challenge of parsing the input, how do you store all that information? And how do you <br />
@@ -65,21 +65,25 @@ find a path in a map that has 10,000 rooms?
 
 I store all parsed data in structs. The ants, rooms, and links are each stored in linked lists. <br />
 
-![screen capture of structs](./images/lemin_struct.jpg)
+![image of lemin struct](./images/lemin_struct.png)
 <br />
 
 The rooms also contain connection and path next/prev structs, which are also stored in linked lists. <br />
 <br />
 
-![screen capture of structs](./images/room_struct.jpg)
+![image of room struct](./images/room_struct.png)
 
-Unfortunately, accessing an individual room among 10,000 by iterating through a linked list is a pain, and can slow down <br />
-your program considerably. So I also keep the rooms in a hashtable, which means I can almost instaneously jump from <br />
-```room 1``` to ```room 9999```, if they are connected. <br />
+Unfortunately, accessing an individual room among 10,000 by iterating through a linked list is a pain, and can slow down 
+<br />
+your program considerably. I therefore also use a hashtable to store the rooms, which means I can almost instaneously jump <br /> 
+from ```room 1``` to ```room 9999```, if they are connected. <br />
+Collisions are accounted for, and are stored adjacently to each other. <br />
 
 My path-solving algorithm functions recursively, going down every possible path simultaneously until it has reached <br />
 the end room, at which point it starts retracing its path back to the start. The first solution it finds therefore _must_ <br />
 be the shortest path, as any longer paths would keep the recursive search going. <br />
+Since all possible paths are pursued simultaneously, rooms that link back to themselves are not a problem. <br />
+If no path is found, an error message is displayed and the program exits. 
 
 ## Usage
 Run ```make```.
