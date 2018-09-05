@@ -25,7 +25,7 @@ Create the program ```lem-in```. <br />
 ```lem-in``` will read the map (describing the ants and the colony) from the ```sdtin```. 
 
 Upon successfully finding the shortest path, ```lem-in``` will display the parsed input, and each ant's move <br />
-from room to room. <br />
+from room to room. ```L1`` representing ant 1, and ```-2``` meaning "into Room2" <br />
 
 ![screen capture of lem_in](./images/lemin.png)
 <br />
