@@ -72,12 +72,12 @@ The rooms also contain connection and path next/prev structs, which are also sto
 
 Unfortunately, accessing an individual room among 10,000 by iterating through a linked list is a pain, and can slow down 
 <br />
-your program considerably. I therefore **impemented a hashtable** for more efficient room storage, which means <br />
-I can almost instaneously jump from ```room 1``` to ```room 9999```, if they are connected. <br />
+your program considerably. I therefore **impemented a hashtable** for more efficient room storage, which means 
+I can almost instaneously jump from ```room 1``` to ```room 9999```, if they are connected. 
 Collisions are accounted for, and are stored adjacently to each other. <br />
 
-**My path-solving algorithm functions recursively**, going down every possible path simultaneously until it has reached <br />
-the end room, at which point it starts retracing its path back to the start. The first solution it finds therefore _must_ <br />
+**My path-solving algorithm functions recursively**, going down every possible path simultaneously until it has reached 
+the end room, at which point it starts retracing its path back to the start. The first solution it finds therefore _must_ 
 be the shortest path, as any longer paths would keep the recursive search going. <br />
 Since all possible paths are pursued simultaneously, rooms that link back to themselves are not a problem. <br />
 If no path is found, an error message is displayed and the program exits. 
@@ -87,7 +87,6 @@ Run ```make```.
 ``` c
 $>./lem-in < maps/test1.map
 ```
-
 
 
 Credit for most of the maps in ./maps goes to: @davhojt & emilwallner.
