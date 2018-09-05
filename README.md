@@ -73,7 +73,7 @@ The rooms also contain connection and path next/prev structs, which are also sto
 Unfortunately, accessing an individual room among 10,000 by iterating through a linked list is a pain, and can slow down 
 <br />
 your program considerably. I therefore **impemented a hashtable** for more efficient room storage, which means 
-I can almost instaneously jump from ```room 1``` to ```room 9999```, if they are connected. 
+I can almost instaneously jump from ```Room 1``` to ```Room 9999```, if they are connected. 
 Collisions are accounted for, and are stored adjacently to each other. <br />
 
 **My path-solving algorithm functions recursively**, going down every possible path simultaneously until it has reached 
