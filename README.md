@@ -23,7 +23,6 @@ Ants will also need to avoid traffic jams (walking all over their fellow ants). 
 
 Create the program ```lem-in```. <br />
 ```lem-in``` will read the map (describing the ants and the colony) from the ```sdtin```. 
-The map 
 
 Upon successfully finding the shortest path, ```lem-in``` will display the parsed input, and each ant's move <br />
 from room to room. <br />
