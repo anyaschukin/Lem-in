@@ -89,4 +89,4 @@ $>./lem-in < maps/test1.map
 ```
 
 
-Credit for most of the maps in ./maps goes to: @davhojt & @emilwallner.
+Credit for many maps goes to: @davhojt & @emilwallner.
