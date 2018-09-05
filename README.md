@@ -31,8 +31,7 @@ from room to room. <br />
 <br />
 
 The program must handle errors carefully, or your program risks crashing violently. In no way can it quit <br />
-in an unexpected manner (segmentation fault, bus error, double free, etc). <br /> 
-It must not have any memory leaks. <br />
+in an unexpected manner (segmentation fault, bus error, double free, etc). It must not have any memory leaks. <br />
 
 **Lem-in** must conform to the [42 Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf). <br />
 Using normal ```libc``` functions is strictly forbidden. Students are however, allowed to use: ```write```, ```read```, 
