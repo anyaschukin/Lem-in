@@ -57,7 +57,7 @@ rooms to be formatted as ```Big Room 1 2```, ```Big Beautiful Room 1 2```, etc. 
 ![image of defines](./images/macros.png)
 <br />
 
-Once you have overcome the intial challenge of parsing the input, how do you store all that information? And how do you <br />
+Once you have overcome the initial challenge of parsing the input, how do you store all that information? And how do you <br />
 find a path in a map that has 10,000 rooms?
 
 I store all parsed data in structs. The ants, rooms, and links are each stored in linked lists. <br />
@@ -72,8 +72,8 @@ The rooms also contain connection and path next/prev structs, which are also sto
 
 Unfortunately, accessing an individual room among 10,000 by iterating through a linked list is a pain, and can slow down 
 <br />
-your program considerably. I therefore **impemented a hashtable** for more efficient room storage, which means 
-I can almost instaneously jump from ```Room 1``` to ```Room 9999```, if they are connected. 
+your program considerably. I therefore **implemented a hashtable** for more efficient room storage, which means 
+I can almost instantaneously jump from ```Room 1``` to ```Room 9999```, if they are connected. 
 Collisions are accounted for, and are stored adjacently to each other. <br />
 
 **My path-solving algorithm functions recursively**, going down every possible path simultaneously until it has reached 
@@ -89,4 +89,4 @@ $>./lem-in < maps/test1.map
 ```
 
 
-Credit for most of the maps in ./maps goes to: @davhojt & emilwallner.
+Credit for most of the maps in ./maps goes to: @davhojt & @emilwallner.
