@@ -78,7 +78,7 @@ Collisions are accounted for, and are stored adjacently to each other. <br />
 
 **My path-solving algorithm functions recursively**, going down every possible path simultaneously until it has reached 
 the end room, at which point it starts retracing its path back to the start. The first solution it finds therefore _must_ 
-be the shortest path, as any longer paths would keep the recursive search going. <br />
+be the shortest path, as any longer paths would keep the recursive search going. 
 Since all possible paths are pursued simultaneously, rooms that link back to themselves are not a problem. <br />
 If no path is found, an error message is displayed and the program exits. 
 
