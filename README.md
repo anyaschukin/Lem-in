@@ -83,7 +83,7 @@ If no path is found, an error message is displayed and the program exits.
 
 ## Usage
 Run ```make```.
-``` c
+```c
 $>./lem-in < maps/test1.map
 ```
 
