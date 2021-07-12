@@ -69,9 +69,7 @@ The rooms also contain connection and path next/prev structs, which are also sto
 ![image of room struct](./images/room_struct.png)
 <br />
 
-Unfortunately, accessing an individual room among 10,000 by iterating through a linked list is a pain, and can slow down 
-<br />
-your program considerably. I therefore **implemented a hashtable** for more efficient room storage, which means 
+Unfortunately, accessing an individual room among 10,000 by iterating through a linked list is a pain, and can slow down your program considerably. I therefore **implemented a hashtable** for more efficient room storage, which means 
 I can almost instantaneously jump from ```Room 1``` to ```Room 9999```, if they are connected. 
 Collisions are accounted for, and are stored adjacently to each other. <br />
 
